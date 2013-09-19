@@ -1,0 +1,104 @@
+<%content_for :breadcrumb do%>
+  <ul class="breadcrumb">
+    <li><%=link_to t(:home), "welcome/index"%><span class="divider">/</span> </li>
+    <li><%=link_to t(:wevents), events_path%><span class="divider">/</span></li>
+    <li class="active"><%=t(:index)%></li>
+  </ul>
+<%end%>
+
+<div class="well">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th><%=link_to t'.Priority' , :sort => "priority"%></th>
+        <th><%=link_to t'.Date' , :sort => "date"%></th>
+        <th><%=link_to t'.Description', :sort => "description"%></th>
+        <th><%=link_to t'.Locality' , :sort => "locality"%></th>
+        <th><%=link_to t'.Source' , :sort => "source"%></th>
+        <th><%=link_to t'.Analyst', :sort => "analyst"%></th>
+        <th><%=link_to t'.Zone' , :sort => "zone"%></th>
+        <th><%=link_to t'.Crime', :sort => "crime"%></th>
+        <th><%=link_to t'.Township' , :sort => "township"%></th>
+        <th><%=link_to t'.Place', :sort => "place"%></th>
+        <th><%=link_to t'.Estatus', :sort => "estatus"%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @events.each do |event| %>
+      <tbody>
+        <tr>
+          <%if can? :read, Event%>
+            <%if event.priority_id==10000%>
+              <td><span class="label label-important"><%= event.priority.description %></span></td>
+            <%elsif event.priority_id==10001%>
+              <td><span class="label label-warning"><%= event.priority.description %></span></td>
+            <%else%>
+              <td><span class="label label-inverse"><%= event.priority.description %></span></td>
+            <%end%>
+            <td><%= event.event_date %></td>
+            <%if event.description%>
+              <td><%= event.description.truncate(25, :omission => "...") %><%= link_to '(continua)', event %></td>
+            <%else%>
+              <td>N/A</td>
+            <%end%>
+            <td><%= event.locality %></td>
+            <% if event.source %>
+              <td><%= event.source.truncate(15, :omission => "...") %> </td>
+            <%else%>
+              <td></td>
+            <%end%>
+            <% if event.analyst %>
+              <td><%= event.analyst.analyst %></td>
+            <%else%>
+              <td>no especificado</td>
+            <%end%>
+            <td><%= event.area.description %></td>
+            <%if event.crime%>
+              <td><%= event.crime.crime %></td>
+            <%else%>
+              <td>no especificado</td>
+            <%end%>
+            <%if event.township%>
+              <td><%= event.township.township %></td>
+            <%else%>
+              <td>no especificado</td>
+            <%end%>
+            <%if event.place%>
+              <td><%= event.place.place %></td>
+            <%else%>
+              <td>no especificado</td>
+            <%end%>
+            <%if event.status%>
+              <td><%= event.status.description %></td>
+            <%else%>
+              <td>sin estatus</td>
+            <%end%>
+            <td>
+              <ul class="nav nav-pills">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
+                  <ul class="dropdown-menu">
+    <%#if can? :show, Event %>
+                    <%if can? :show, Event%>
+                      <li><%= link_to 'Show', event %></li>
+                    <%end%>
+                    <%if can? :edit, Event%>
+                      <li><%= link_to 'Edit', edit_event_path(event) %></li>
+                    <%end%>
+                    <%if can? :destroy, Event%>
+                      <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                    <%end%>
+    <%#end%>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    <%end%>
+  </table>
+</div>
+<br />
+
+<%= link_to t(:wnew)+" "+t(:wevent), new_event_path, :class => "btn btn-primary" %>

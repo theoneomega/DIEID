@@ -1,0 +1,5 @@
+CriminalWeapon.create(:id => 10012, :weapon_id => 10025, :criminal_group_id => 10026)
+CriminalWeapon.create(:id => 10007, :weapon_id => 10020, :criminal_group_id => 10023)
+CriminalWeapon.create(:id => 10008, :weapon_id => 10023, :criminal_group_id => 10024)
+CriminalWeapon.create(:id => 10006, :weapon_id => 10023, :criminal_group_id => 10023)
+CriminalWeapon.create(:id => 10009, :weapon_id => 10024, :criminal_group_id => 10024)

@@ -1,0 +1,35 @@
+<h1>Listing roles</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Role</th>
+    <th>Protected</th>
+    <th>Super admin</th>
+    <th>Analyst</th>
+    <th>Administrator</th>
+    <th>Supervisor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roles.each do |role| %>
+  <tr>
+    <td><%= role.id %></td>
+    <td><%= role.role %></td>
+    <td><%= role.protected %></td>
+    <td><%= role.super_admin %></td>
+    <td><%= role.analyst %></td>
+    <td><%= role.administrator %></td>
+    <td><%= role.supervisor %></td>
+    <td><%= link_to 'Show', role %></td>
+    <td><%= link_to 'Edit', edit_role_path(role) %></td>
+    <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Role', new_role_path %>

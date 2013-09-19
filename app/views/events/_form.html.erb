@@ -1,0 +1,141 @@
+<%= nested_form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="block">
+    <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:wnew)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
+    <div id="page-stats" class="block-body collapse in">
+
+      <div class="field">
+        <%= f.label :priority_id %><br />
+        <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
+      </div>
+
+
+      <div id="datetimepicker" class="input-append date">
+        <%= f.label :event_date %><br />
+        <%= f.text_field :event_date%>
+        <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+      </div>
+
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+      </div>
+      <div class="field">
+        <%= f.label :street %><br />
+        <%= f.text_field :street %>
+      </div>
+      <div class="field">
+        <%= f.label :interior_number %><br />
+        <%= f.text_field :interior_number %>
+      </div>
+      <div class="field">
+        <%= f.label :suburb %><br />
+        <%= f.text_field :suburb %>
+      </div>
+      <div class="field">
+        <%= f.label :locality %><br />
+        <%= f.text_field :locality %>
+      </div>
+
+
+      <div id="general-info2" class="block-body collapse in">
+        <p>
+          <%=f.fields_for :person do |builder| %>
+            <%= render 'people_fields', :f => builder %>
+          <%end%>
+          <%= f.link_to_add "add a person", :person, :class => "btn btn-primary" %>
+        </p>
+      </div>
+
+      <div id="general-info2" class="block-body collapse in">
+        <p>
+          <%=f.fields_for :vehicles do |builder| %>
+            <%= render 'vehicles_fields', :f => builder %>
+          <%end%>
+          <%= f.link_to_add "add a vehicle", :vehicles, :class => "btn btn-primary" %>
+        </p>
+      </div>
+
+      <div id="general-info2" class="block-body collapse in">
+        <p>
+          <%=f.fields_for :drug do |builder| %>
+            <%= render 'drug_fields', :f => builder %>
+          <%end%>
+          <%= f.link_to_add "add a drug", :drug, :class => "btn btn-primary" %>
+        </p>
+      </div>
+
+      <div class="field">
+        <%= f.label :observations %><br />
+        <%= f.text_area :observations %>
+      </div>
+      <div class="field">
+        <%= f.label :backup_file %><br />
+        <%= f.text_field :backup_file %>
+      </div>
+      <div class="field">
+        <%= f.label :source %><br />
+        <%= f.text_field :source %>
+      </div>
+      <div class="field">
+        <%= f.label :analyst_id %><br />
+        <%= f.text_field :analyst_id, :value => current_user.analyst.analyst,:readonly => true %>
+      </div>
+      <div class="field">
+        <%= f.label :area_id %><br />
+        <%= f.collection_select(:area_id, Area.all, :id, :description, {:prompt => "seleccione area"}) %>
+      </div>
+      <div class="field">
+        <%= f.label :crime_id %><br />
+        <%= f.collection_select(:crime_id, Crime.all, :id, :crime, {:prompt => "seleccione crimen"}) %>
+      </div>
+      <div class="field">
+        <%= f.label :township_id %><br />
+        <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "seleccione municipio"}) %>
+      </div>
+      <div class="field">
+        <%= f.label :place_id %><br />
+        <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :status_id %><br />
+        <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>
+      </div>
+      <div class="actions">
+        <%= button_tag( :class => "btn btn-primary") do %>
+          <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script> 
+<script type="text/javascript"
+        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+
+<script type="text/javascript">
+  $('#datetimepicker').datetimepicker({
+    format: 'dd/MM/yyyy hh:mm:ss',
+    language: 'es-ES'
+  });
+</script>

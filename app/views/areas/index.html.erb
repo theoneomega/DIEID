@@ -1,0 +1,34 @@
+<h1>Listing areas</h1>
+<div class="well">
+  <table class="table-condensed table">
+    <thead>
+      <tr>
+        <th> <%= t'.id' %> </th>
+        <th><%=  t'.description'%></th>
+        <th> <%=t(:actions)%></th>
+      </tr>
+    </thead>
+    <% @areas.each do |area| %>
+      <tbody>
+        <tr>
+          <td><%= area.id %></td>
+          <td><%= area.description %></td>
+          <td>
+            <ul class="nav nav-pills">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Show', area %></li>
+                  <li><%= link_to 'Edit', edit_area_path(area) %></li>
+                  <li><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+                </td>
+                </tr>
+
+              <% end %>
+              </tbody>
+              </table>
+              </div>
+              <br />
+
+              <%= link_to 'New Area', new_area_path, :class => "btn btn-primary" %>
