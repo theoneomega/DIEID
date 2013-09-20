@@ -11,7 +11,11 @@
     </div>
   <% end %>
   <div class="block">
-    <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:wnew)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
+    <%if controller.action_name == "edit" or controller.action_name == "update"%>
+      <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:edit)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
+    <%else%>
+      <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:wnew)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
+    <%end%>
     <div id="page-stats" class="block-body collapse in">
 
       <div class="field">
@@ -88,18 +92,16 @@
         <%= f.text_field :source %>
       </div>
 
-      <%if can? :edit, :event, :analyst_id%>
+      <%if controller.action_name == "edit" or controller.action_name == "update" and (current_user.role.supervisor==true || current_user.role.super_admin==true)%>
         <div class="field">
           <%= f.label :analyst_id %><br />
-          <%= f.collection_select(:analyst_id, Analyst.all, :id, :analyst, {:prompt => "seleccione analista"}) %>
+          <%= f.collection_select(:analyst_id, Analyst.all, :id, :analyst, {:prompt => @event.analyst.analyst}) %>
         </div>
       <%else%>
         <div class="field">
-          <%= f.label :analyst_id %><br />
-          <%= f.text_field :analyst_id, :value => current_user.analyst.analyst,:readonly => true %>
+          <%= f.hidden_field :analyst_id, :value => current_user.analyst_id %>
         </div>
       <%end%>
-
 
       <div class="field">
         <%= f.label :area_id %><br />

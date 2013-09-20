@@ -99,7 +99,9 @@
 
       <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-folder-close-alt"></i> <%=t(:catalog)%> </a>
       <ul id="dashboard-menu" class="nav nav-list collapse in">
-        <li><%= link_to t(:wevents), events_path%></li>
+        <%if signed_in?%>
+          <li><%= link_to t(:wevents), events_path%></li>
+        <%end%>
         <% if can? :index, Person %>
           <li><%= link_to t(:wpersons), people_path%></li>
         <%end%>
@@ -185,17 +187,17 @@
       --> </div>
 
     <div class="content">
+      <%if signed_in?%>
+        <div class="header">
+          <div class="stats">
+            <p class="stat"><span class="number"><%= Event.where(:priority_id => 10002).count%></span><%=link_to "Prioridad Baja", events_path%></p>
+            <p class="stat"><span class="number"><%= Event.where(:priority_id => 10001).count%></span><%=link_to "Prioridad Media", events_path%></p>
+            <p class="stat"><span class="number "><%= Event.where(:priority_id => 10000).count%></span><%=link_to "Prioridad Alta", events_path%></p>
+          </div>
 
-      <div class="header">
-        <div class="stats">
-          <p class="stat"><span class="number"><%= Event.where(:priority_id => 10002).count%></span><%=link_to "Prioridad Baja", events_path%></p>
-          <p class="stat"><span class="number"><%= Event.where(:priority_id => 10001).count%></span><%=link_to "Prioridad Media", events_path%></p>
-          <p class="stat"><span class="number "><%= Event.where(:priority_id => 10000).count%></span><%=link_to "Prioridad Alta", events_path%></p>
+          <h1 class="page-title"><%= eval("t(:w" + controller_name + ")") %></h1>
         </div>
-
-        <h1 class="page-title"><%= eval("t(:w" + controller_name + ")") %></h1>
-      </div>
-
+      <%end%>
       <%=yield :breadcrumb%>
 
       <div class="container-fluid">

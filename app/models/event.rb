@@ -21,6 +21,10 @@ class Event < ActiveRecord::Base
   belongs_to :township
   belongs_to :place
   
+  validates :priority, :presence => true
+  validates :description, :presence => true
+  validates :area_id, :presence => true
+  
   accepts_nested_attributes_for :person, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :vehicles, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :drug, :allow_destroy => true, :reject_if => :all_blank
