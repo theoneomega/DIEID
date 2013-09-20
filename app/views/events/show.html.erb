@@ -153,7 +153,7 @@
         <div class="control-group">
           <%@event.vehicles.each do |vehicle|%>
             <ul>
-              <li><%vehicle.fulldescription %></li>
+              <li><%=vehicle.fulldescription %></li>
             </ul>
           <%end%>
         </div>
@@ -166,7 +166,7 @@
         <div class="control-group">
           <%@event.weapons.each do |weapon|%>
             <ul>
-              <li><%weapons.fulldescription %></li>
+              <li><%=weapons.fulldescription %></li>
             </ul>
           <%end%>
         </div>

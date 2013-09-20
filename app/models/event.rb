@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description, :analist_id
+  attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description
   attr_accessible :detained, :detained_id, :drug_id, :drugs, :event_date, :id
   attr_accessible :interior_number, :locality, :observations, :place_id, :priority_id
   attr_accessible:source, :status_id, :street, :suburb, :suspect_id, :suspects, :township_id

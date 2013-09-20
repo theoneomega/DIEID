@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-  attr_accessible :description, :id, :status_type
+  attr_accessible :description, :id, :status_type, :detail
   has_many :person, :dependent => :destroy
   has_many :event, :dependent => :destroy 
 end

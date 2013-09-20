@@ -4,9 +4,9 @@
       <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
 
       <ul>
-      <% @role.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @role.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -34,6 +34,10 @@
   <div class="field">
     <%= f.label :supervisor %><br />
     <%= f.check_box :supervisor %>
+  </div>
+  <div class="field">
+    <%= f.label :medios %><br />
+    <%= f.check_box :medios %>
   </div>
   <div class="actions">
     <%= f.submit %>

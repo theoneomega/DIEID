@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919195352) do
+ActiveRecord::Schema.define(:version => 20130920220215) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",                                  :null => false
@@ -163,7 +163,6 @@ ActiveRecord::Schema.define(:version => 20130919195352) do
     t.text     "observations"
     t.string   "backup_file"
     t.string   "source"
-    t.integer  "analist_id",      :precision => 38, :scale => 0
     t.integer  "area_id",         :precision => 38, :scale => 0
     t.integer  "crime_id",        :precision => 38, :scale => 0
     t.integer  "township_id",     :precision => 38, :scale => 0
@@ -219,6 +218,7 @@ ActiveRecord::Schema.define(:version => 20130919195352) do
     t.boolean  "supervisor",    :precision => 1, :scale => 0
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
+    t.boolean  "medios",        :precision => 1, :scale => 0
   end
 
   create_table "statuses", :force => true do |t|
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20130919195352) do
     t.string   "status_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "detail"
   end
 
   create_table "townships", :force => true do |t|

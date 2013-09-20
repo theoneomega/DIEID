@@ -11,10 +11,15 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label "Descripción" %><br />
     <%= f.text_field :description %>
   </div>
-  <% status_type={"persona"=>"persona","evento"=>"evento"} %>
+
+<div class="field">
+    <%= f.label "Detalle" %><br />
+    <%= f.text_area :detail %>
+  </div>
+  <% status_type={"Persona"=>"persona","Evento"=>"evento"} %>
   <div class="field">
     <%= f.label :status_type %><br />
     <%= f.select :status_type,status_type,selected: "persona" %>

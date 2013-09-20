@@ -50,34 +50,34 @@
         <%= f.label :Localidad %><br />
         <%= f.text_field :locality %>
       </div>
+      <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
+
+      <p>
+        <%=f.fields_for :person do |builder| %>
+          <%= render 'people_fields', :f => builder %>
+        <%end%>
+      </p>
+
+      <p>
+        <%=f.fields_for :vehicles do |builder| %>
+          <%= render 'vehicles_fields', :f => builder %>
+        <%end%>
+
+      </p>
+
+      <p>
+        <%=f.fields_for :drug do |builder| %>
+          <%= render 'drug_fields', :f => builder %>
+        <%end%>
 
 
-      <div id="general-info2" class="block-body collapse in">
-        <p>
-          <%=f.fields_for :person do |builder| %>
-            <%= render 'people_fields', :f => builder %>
-          <%end%>
-          <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %>
-        </p>
-      </div>
+      <p>
+        <%=f.fields_for :weapons do |builder| %>
+          <%= render 'weapons_fields', :f => builder %>
+        <%end%>
 
-      <div id="general-info2" class="block-body collapse in">
-        <p>
-          <%=f.fields_for :vehicles do |builder| %>
-            <%= render 'vehicles_fields', :f => builder %>
-          <%end%>
-          <%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %>
-        </p>
-      </div>
+      </p>
 
-      <div id="general-info2" class="block-body collapse in">
-        <p>
-          <%=f.fields_for :drug do |builder| %>
-            <%= render 'drug_fields', :f => builder %>
-          <%end%>
-          <%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
-        </p>
-      </div>
 
       <div class="field">
         <%= f.label :Observaciones %><br />
@@ -119,11 +119,14 @@
         <%= f.label :Lugar %><br />
         <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
       </div>
-
-      <div class="field">
-        <%= f.label :status_id %><br />
-        <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>
-      </div>
+       <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+        <div class="field">
+          <%= f.label :status_id %><br />
+          <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>
+        </div>
+      <%else%>
+        <%= f.hidden_field :status_id, :value => 10020 %><br />
+      <%end%>
       <div class="actions">
         <%= button_tag( :class => "btn btn-primary") do %>
           <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>

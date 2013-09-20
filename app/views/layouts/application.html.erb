@@ -141,6 +141,9 @@
         <% if can? :index, Priority %>
           <li><%= link_to t(:wpriorities), priorities_path %></li>
         <%end%>
+        <% if can? :index, Role %>
+          <li><%= link_to "Roles", roles_path %></li>
+        <%end%>
       </ul>
 
       <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i><%=t(:account)%></a>
