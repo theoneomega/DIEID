@@ -15,35 +15,35 @@
     <div id="page-stats" class="block-body collapse in">
 
       <div class="field">
-        <%= f.label :priority_id %><br />
+        <%= f.label :Prioridad %><br />
         <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
       </div>
 
 
       <div id="datetimepicker" class="input-append date">
-        <%= f.label :event_date %><br />
+        <%= f.label :Fecha_de_Evento %><br />
         <%= f.text_field :event_date%>
         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
       </div>
 
       <div class="field">
-        <%= f.label :description %><br />
+        <%= f.label :Descripcion %><br />
         <%= f.text_area :description %>
       </div>
       <div class="field">
-        <%= f.label :street %><br />
+        <%= f.label :Calle %><br />
         <%= f.text_field :street %>
       </div>
       <div class="field">
-        <%= f.label :interior_number %><br />
+        <%= f.label :Numero %><br />
         <%= f.text_field :interior_number %>
       </div>
       <div class="field">
-        <%= f.label :suburb %><br />
+        <%= f.label :Colonia %><br />
         <%= f.text_field :suburb %>
       </div>
       <div class="field">
-        <%= f.label :locality %><br />
+        <%= f.label :Localidad %><br />
         <%= f.text_field :locality %>
       </div>
 
@@ -53,7 +53,7 @@
           <%=f.fields_for :person do |builder| %>
             <%= render 'people_fields', :f => builder %>
           <%end%>
-          <%= f.link_to_add "add a person", :person, :class => "btn btn-primary" %>
+          <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %>
         </p>
       </div>
 
@@ -62,7 +62,7 @@
           <%=f.fields_for :vehicles do |builder| %>
             <%= render 'vehicles_fields', :f => builder %>
           <%end%>
-          <%= f.link_to_add "add a vehicle", :vehicles, :class => "btn btn-primary" %>
+          <%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %>
         </p>
       </div>
 
@@ -71,20 +71,20 @@
           <%=f.fields_for :drug do |builder| %>
             <%= render 'drug_fields', :f => builder %>
           <%end%>
-          <%= f.link_to_add "add a drug", :drug, :class => "btn btn-primary" %>
+          <%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
         </p>
       </div>
 
       <div class="field">
-        <%= f.label :observations %><br />
+        <%= f.label :Observaciones %><br />
         <%= f.text_area :observations %>
       </div>
       <div class="field">
-        <%= f.label :backup_file %><br />
+        <%= f.label :Anteedentes %><br />
         <%= f.text_field :backup_file %>
       </div>
       <div class="field">
-        <%= f.label :source %><br />
+        <%= f.label :Codigo %><br />
         <%= f.text_field :source %>
       </div>
 
@@ -106,15 +106,15 @@
         <%= f.collection_select(:area_id, Area.all, :id, :description, {:prompt => "seleccione area"}) %>
       </div>
       <div class="field">
-        <%= f.label :crime_id %><br />
+        <%= f.label :Delito %><br />
         <%= f.collection_select(:crime_id, Crime.all, :id, :crime, {:prompt => "seleccione crimen"}) %>
       </div>
       <div class="field">
-        <%= f.label :township_id %><br />
+        <%= f.label :Municipio %><br />
         <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "seleccione municipio"}) %>
       </div>
       <div class="field">
-        <%= f.label :place_id %><br />
+        <%= f.label :Lugar %><br />
         <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
       </div>
 

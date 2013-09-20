@@ -19,58 +19,58 @@
   <div class="block-body">
 
     <p>
-      <b>Priority:</b>
+      <b>Prioridad:</b>
       <%= @event.priority.description %>
     </p>
 
     <p>
-      <b>Event date:</b>
+      <b>Fecha de evento: </b>
       <%= @event.event_date %>
     </p>
 
     <p>
-      <b>Description:</b>
+      <b>Descripcion: </b>
       <%= @event.description %>
     </p>
 
     <p>
-      <b>Street:</b>
+      <b>Calle: </b>
       <%= @event.street %>
     </p>
 
     <p>
-      <b>Interior number:</b>
+      <b>Numero Interior: </b>
       <%= @event.interior_number %>
     </p>
 
     <p>
-      <b>Suburb:</b>
+      <b>Colonia: </b>
       <%= @event.suburb %>
     </p>
 
     <p>
-      <b>Locality:</b>
+      <b>Localidad: </b>
       <%= @event.locality %>
     </p>
 
     <p>
-      <b>Observations:</b>
+      <b>Observaciones: </b>
       <%= @event.observations %>
     </p>
 
     <p>
-      <b>Backup file:</b>
+      <b>Antecedentes: </b>
       <%= @event.backup_file %>
     </p>
 
     <p>
-      <b>Source:</b>
+      <b>Fuente: </b>
       <%= @event.source %>
     </p>
 
     <p>
       <%if @event.analyst !=nil%>
-        <b>Analyst:</b>
+        <b>Analista: </b>
         <%= @event.analyst.analyst%>
       <%end%>
     </p>
@@ -81,21 +81,21 @@
     </p>
 
     <p>
-      <b>Crime:</b>
+      <b>Delito: </b>
       <%if @event.crime !=nil%>
         <%= @event.crime.crime %>
       <%end%>
     </p>
 
     <p>
-      <b>Township:</b>
+      <b>Municipio: </b>
       <%if @event.township !=nil%>
         <%= @event.township.township %>
       <%end%>
     </p>
 
     <p>
-      <b>Place:</b>
+      <b>Lugar: </b>
       <%if @event.place !=nil%>
         <%= @event.place.place %>
       <%end%>
