@@ -11,8 +11,9 @@ class Ability
       if @user.role.super_admin == true
         can :manage, :all
       elsif @user.role.analyst == true
-        can :update, Event, :analyst_id => @user.analyst_id
-        can :read, Event, :analyst_id => @user.analyst_id 
+        can :update, Event
+        can :read, Event
+        cannot :create, Event
       elsif @user.role.supervisor == true
         can [:read, :update, :destroy], Event
       elsif @user.role.medios == true

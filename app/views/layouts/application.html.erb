@@ -81,7 +81,7 @@
                 </li>
                 <li class="divider"></li>
                 <li><%= link_to destroy_user_session_path do%>
-                    <i class="icon-signout"></i><%= " " + t(:logout) + " " + current_user.analyst.analyst%>
+                    <i class="icon-signout"></i><%= " Cerrar Sesión "  + current_user.analyst.analyst%>
                   <%end%>
                 </li>                
               </ul>
@@ -147,15 +147,16 @@
       </ul>
 
       <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i><%=t(:account)%></a>
+      
       <ul id="accounts-menu" class="nav nav-list collapse in">
 
         <%if signed_in?%>
 
           <li>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+            <%= link_to('Cerrar Sesión', destroy_user_session_path, :method => :delete) %>        
           </li>
           <li>
-            <%= link_to('Edit registration', edit_user_registration_path) %>
+            <%= link_to('Editar Registro', edit_user_registration_path) %>
           </li>
         <%else%>
           <li><%= link_to new_user_session_path do%>
@@ -163,7 +164,7 @@
             <%end%>
           </li>
           <li>
-            <%= link_to('Register', new_user_registration_path)  %>
+            <%= link_to('Registrar', new_user_registration_path)  %>
           </li>
         <%end%>
 
@@ -200,6 +201,8 @@
 
           <h1 class="page-title"><%= eval("t(:w" + controller_name + ")") %></h1>
         </div>
+      
+      
       <%end%>
       <%=yield :breadcrumb%>
 
@@ -222,7 +225,7 @@
           </div>
         </div>
       </div>
-
+    </div>
       <script src="lib/bootstrap/js/bootstrap.js"></script>
       <script type="text/javascript">
       $("[rel=tooltip]").tooltip();

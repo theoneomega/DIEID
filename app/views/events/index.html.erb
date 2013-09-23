@@ -1,11 +1,19 @@
 <%content_for :breadcrumb do%>
   <ul class="breadcrumb">
-    <li><%=link_to t(:home), "welcome/index"%><span class="divider">/</span> </li>
+    <li><%=link_to t(:home), root_path %><span class="divider">/</span> </li>
     <li><%=link_to t(:wevents), events_path%><span class="divider">/</span></li>
     <li class="active"><%=t(:index)%></li>
   </ul>
 <%end%>
-
+<%content_for :analyst_counter do%>
+  <div class="header">
+    <%@events.each do |p|%>
+      <div class="stats">
+        <p class="stat"><span class="number"><%= p.analyst_id%></span><%=link_to "Prioridad Baja", events_path%></p>
+      </div>
+    <%end%>
+  </div>
+<%end%>
 <div class="well">
 
   <table class="table table-condensed">
@@ -111,13 +119,13 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
                     <ul class="dropdown-menu">
                       <%if can? :show, Event%>
-                        <li><%= link_to 'Show', event %></li>
+                        <li><%= link_to 'Mostrar', event %></li>
                       <%end%>
                       <%if can? :edit, Event%>
-                        <li><%= link_to 'Edit', edit_event_path(event) %></li>
+                        <li><%= link_to 'Editar', edit_event_path(event) %></li>
                       <%end%>
                       <%if can? :destroy, Event%>
-                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
                       <%end%>
                     </ul>
                   </li>
@@ -131,6 +139,6 @@
   </table>
 </div>
 <br />
-<%#if can? :create, Event%>
+<%if can? :create, Event%>
   <%= link_to t(:wnew)+" "+t(:wevent), new_event_path, :class => "btn btn-primary" %>
-<%#end%>
+<%end%>
