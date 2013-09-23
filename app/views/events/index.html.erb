@@ -32,7 +32,7 @@
     </thead>
     <% @events.each do |event| %>
       <tbody>
-        <%if event.analyst_id == current_user.analyst_id && current_user.role.analyst==true%>
+        <%if event.analyst_id == current_user.analyst_id && (current_user.role.analyst==true || current_user.role.medios==true)%>
           <tr>
             <%if can? :read, Event%>
               <%if event.priority_id==10000%>
