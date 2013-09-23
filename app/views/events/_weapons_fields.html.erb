@@ -1,6 +1,6 @@
 
 <div class="block">
-  <a href="#weapons" class="block-heading" data-toggle="collapse">New weapon</a>
+  <a href="#weapons" class="block-heading" data-toggle="collapse">Registrar Arma</a>
   <div id="weapons" class="block-body collapse in">
     <div class="control-group">
 
@@ -33,7 +33,7 @@
         <%= f.label :weapon_type_id %><br />
         <%= f.collection_select(:weapon_type_id, WeaponType.all, :id, :desc, {:prompt => "seleccione tipo de arma"}) %>
       </div>
-      <%=f.link_to_remove "remove weapon",:class => 'btn btn-danger'%>
+      <%=f.link_to_remove "Remover Arma",:class => 'btn btn-danger'%>
     </div>
   </div>
 </div>

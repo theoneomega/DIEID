@@ -68,13 +68,13 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
                     <ul class="dropdown-menu">
                       <%if can? :show, Event%>
-                        <li><%= link_to 'Show', event %></li>
+                        <li><%= link_to 'Mostrar', event %></li>
                       <%end%>
                       <%if can? :edit, Event%>
-                        <li><%= link_to 'Edit', edit_event_path(event) %></li>
+                        <li><%= link_to 'Editar', edit_event_path(event) %></li>
                       <%end%>
                       <%if can? :destroy, Event%>
-                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
                       <%end%>
                     </ul>
                   </li>

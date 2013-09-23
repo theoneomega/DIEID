@@ -1,5 +1,5 @@
 <div class="block">
-  <a href="#vehicle" class="block-heading" data-toggle="collapse">New vehicle</a>
+  <a href="#vehicle" class="block-heading" data-toggle="collapse">Nuevo Vehiculo</a>
   <div id="vehicle" class="block-body collapse in">
     <div class="control-group">
       <div class="control-group">
@@ -40,7 +40,7 @@
           <%= f.label :person_id %><br />
           <%= f.collection_select(:person_id, Person.all, :id, :fullname, {:prompt => "seleccione persona"}) %>
         </div>
-        <%=f.link_to_remove "remove vehicle",:class => 'btn btn-danger'%>
+        <%=f.link_to_remove "Remover Vehiculo",:class => 'btn btn-danger'%>
       </div>
     </div>
   </div>
