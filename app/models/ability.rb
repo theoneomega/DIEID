@@ -13,9 +13,9 @@ class Ability
       elsif @user.role.analyst == true
         can :update, Event
         can :read, Event
-        cannot :create, Event
+        can :create, Event
       elsif @user.role.supervisor == true
-        can [:read, :update, :destroy], Event
+        can [:read, :update, :destroy, :create], Event
       elsif @user.role.medios == true
         can [:read, :create, :update], Event
       end
