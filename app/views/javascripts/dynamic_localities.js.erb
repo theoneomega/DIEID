@@ -1,0 +1,25 @@
+var localities = new Array();
+<% for locality in @localities %>
+  localities.push(new Array(<%= locality.township_id %>, '<%= locality.locality %>', '<%= locality.id %>');
+<% end %>
+
+function townshipSelected() {
+  towhship_id = $('event_locality_id').getValue();
+  options = $('event_locality_id').options;
+  options.length = 1;
+  localities.each(function(locality) {
+    if (locality[0] == township_id) {
+      options[options.length] = new Option(locality[1], locality[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('locality_field').hide();
+  } else {
+    $('locality_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  townshipSelected();
+  $('event_locality_id').observe('change', townshipSelected);
+});

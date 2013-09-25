@@ -1,4 +1,15 @@
 es:
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            priority:
+              blank: No puedes dejar prioridad en blanco
+            description:
+              blank: No puedes dejar descripcion en blanco
+       
+        
   account: Cuenta
   wsave: Guardar
   wstatuses: Estatus
@@ -101,6 +112,7 @@ es:
       format: ! '%{attribute} %{message}'
   
   wdrugs: Drogas
+  wfullevents: Todos los eventos
   username: Usuario
   password_confirmation: Confirme contraseña
   analyst: Analista

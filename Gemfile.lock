@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ernie/ransack.git
+  revision: 3250d339bed60ae6c152e5c1827e13aab72dd8be
+  specs:
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,6 +87,8 @@ GEM
     multi_json (1.7.9)
     nested_form (0.3.2)
     orm_adapter (0.4.0)
+    polyamorous (0.6.4)
+      activerecord (>= 3.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -164,6 +175,7 @@ DEPENDENCIES
   jquery-rails (~> 2.0.1)
   nested_form
   rails (= 3.2.13)
+  ransack!
   rolify
   ruby-oci8 (~> 2.1.0)
   sass-rails (~> 3.2.3)

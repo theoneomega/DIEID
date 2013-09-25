@@ -4,11 +4,13 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order('priority_id').all
+    @search = Event.search(params[:q])
+    @events = @search.result(distinct: true)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
+      
     end
   end
 

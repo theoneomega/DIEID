@@ -15,130 +15,139 @@
   </div>
 <%end%>
 <div class="well">
-
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th><%=link_to t'.Priority' , :sort => "priority"%></th>
-        <th><%=link_to t'.Estatus', :sort => "estatus"%></th>
-        <th><%=link_to t'.Date' , :sort => "date"%></th>
-        <th><%=link_to t'.Description', :sort => "description"%></th>
-        <th><%=link_to t'.Crime', :sort => "crime"%></th>
-        <%if current_user.role.supervisor==true|| current_user.role.super_admin==true%>
-          <th><%=link_to t'.Analyst', :sort => "analyst"%></th>
-        <%end%>
-        <th><%= t(:actions) %></th>
-      </tr>
-    </thead>
-    <% @events.each do |event| %>
-      <tbody>
-        <%if event.analyst_id == current_user.analyst_id && (current_user.role.analyst==true || current_user.role.medios==true)%>
-          <tr>
-            <%if can? :read, Event%>
-              <%if event.priority_id==10000%>
-                <td><span class="label label-important"><%= event.priority.description %></span></td>
-              <%elsif event.priority_id==10001%>
-                <td><span class="label label-warning"><%= event.priority.description %></span></td>
-              <%else%>
-                <td><span class="label label-inverse"><%= event.priority.description %></span></td>
-              <%end%>
-              <%if event.status%>
-                <td><%= event.status.description %></td>
-              <%else%>
-                <td>sin estatus</td>
-              <%end%>
-              <td><%= event.event_date %></td>
-              <%if event.description%>
-                <td><%= event.description.truncate(25, :omission => "...") %><%= link_to '(continua)', event %></td>
-              <%else%>
-                <td>N/A</td>
-              <%end%>
-
-              <%if event.crime%>
-                <td><%= event.crime.crime %></td>
-              <%else%>
-                <td>no especificado</td>
-              <%end%>
-              <%if current_user.role.supervisor==true%>
-                <td><%= event.analyst.analyst %></td>
-              <%end%>
-              <td>
-                <ul class="nav nav-pills">
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                      <%if can? :show, Event%>
-                        <li><%= link_to 'Mostrar', event %></li>
-                      <%end%>
-                      <%if can? :edit, Event%>
-                        <li><%= link_to 'Editar', edit_event_path(event) %></li>
-                      <%end%>
-                      <%if can? :destroy, Event%>
-                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
-                      <%end%>
-                    </ul>
-                  </li>
-                </ul>
-              </td>
-            </tr>
+  <%#*<div class="well">%>
+    <%#= search_form_for @search do |f| %>
+      <%#*<div class="field">%>
+        <%#=f.label :analyst_id, "Analista"%>
+        <%#=f.text_field :analyst_id%>
+      <%#*</div>%>
+      <%#*<div class="actions">%>
+        <%#= f.submit "Search" %>
+      <%#*</div>%>
+    <%#end%>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th><%=sort_link @search, :priority_id, "Prioridad" %></th>
+          <th><%=sort_link @search, :status_id, "Estatus" %></th>
+          <th><%=sort_link @search, :event_date, "Fecha" %></th>
+          <th><%="Descripcion" %></th>
+          <th><%=sort_link @search, :crime_id, "Delito" %></th>
+          <%if current_user.role.supervisor==true|| current_user.role.super_admin==true%>
+            <th><%=sort_link @search, :analyst_id, "Analista" %></th>
           <%end%>
-        <%end%>
-        <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
-          <tr>
-            <%if can? :read, Event%>
-              <%if event.priority_id==10000%>
-                <td><span class="label label-important"><%= event.priority.description %></span></td>
-              <%elsif event.priority_id==10001%>
-                <td><span class="label label-warning"><%= event.priority.description %></span></td>
-              <%else%>
-                <td><span class="label label-inverse"><%= event.priority.description %></span></td>
-              <%end%>
-              <%if event.status%>
-                <td><%= event.status.description %></td>
-              <%else%>
-                <td>sin estatus</td>
-              <%end%>
-              <td><%= event.event_date %></td>
-              <%if event.description%>
-                <td><%= event.description.truncate(25, :omission => "...") %><%= link_to '(continua)', event %></td>
-              <%else%>
-                <td>N/A</td>
-              <%end%>
+          <th><%= t(:actions) %></th>
+        </tr>
+      </thead>
+      <% @events.each do |event| %>
+        <tbody>
+          <%if event.analyst_id == current_user.analyst_id && (current_user.role.analyst==true || current_user.role.medios==true)%>
+            <tr>
+              <%if can? :read, Event%>
+                <%if event.priority_id==10000%>
+                  <td><span class="label label-important"><%= event.priority.description %></span></td>
+                <%elsif event.priority_id==10001%>
+                  <td><span class="label label-warning"><%= event.priority.description %></span></td>
+                <%else%>
+                  <td><span class="label label-inverse"><%= event.priority.description %></span></td>
+                <%end%>
+                <%if event.status%>
+                  <td><%= event.status.description %></td>
+                <%else%>
+                  <td>sin estatus</td>
+                <%end%>
+                <td><%= event.event_date %></td>
+                <%if event.description%>
+                  <td><%= event.description.truncate(25, :omission => "...") %><%= link_to '(continua)', event %></td>
+                <%else%>
+                  <td>N/A</td>
+                <%end%>
 
-              <%if event.crime%>
-                <td><%= event.crime.crime %></td>
-              <%else%>
-                <td>no especificado</td>
-              <%end%>
-              <%if current_user.role.supervisor==true|| current_user.role.super_admin==true %>
-                <td><%= event.analyst.analyst %></td>
-              <%end%>
-              <td>
-                <ul class="nav nav-pills">
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                      <%if can? :show, Event%>
-                        <li><%= link_to 'Mostrar', event %></li>
-                      <%end%>
-                      <%if can? :edit, Event%>
-                        <li><%= link_to 'Editar', edit_event_path(event) %></li>
-                      <%end%>
-                      <%if can? :destroy, Event%>
-                        <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
-                      <%end%>
-                    </ul>
-                  </li>
-                </ul>
-              </td>
-            </tr>
+                <%if event.crime%>
+                  <td><%= event.crime.crime %></td>
+                <%else%>
+                  <td>no especificado</td>
+                <%end%>
+                <%if current_user.role.supervisor==true%>
+                  <td><%= event.analyst.analyst %></td>
+                <%end%>
+                <td>
+                  <ul class="nav nav-pills">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <%if can? :show, Event%>
+                          <li><%= link_to 'Mostrar', event %></li>
+                        <%end%>
+                        <%if can? :edit, Event%>
+                          <li><%= link_to 'Editar', edit_event_path(event) %></li>
+                        <%end%>
+                        <%if can? :destroy, Event%>
+                          <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
+                        <%end%>
+                      </ul>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            <%end%>
           <%end%>
-        <%end%>
-      </tbody>
-    <%end%>
-  </table>
-</div>
-<br />
-<%if can? :create, Event%>
-  <%= link_to t(:wnew)+" "+t(:wevent), new_event_path, :class => "btn btn-primary" %>
-<%end%>
+          <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+            <tr>
+              <%if can? :read, Event%>
+                <%if event.priority_id==10000%>
+                  <td><span class="label label-important"><%= event.priority.description %></span></td>
+                <%elsif event.priority_id==10001%>
+                  <td><span class="label label-warning"><%= event.priority.description %></span></td>
+                <%else%>
+                  <td><span class="label label-inverse"><%= event.priority.description %></span></td>
+                <%end%>
+                <%if event.status%>
+                  <td><%= event.status.description %></td>
+                <%else%>
+                  <td>sin estatus</td>
+                <%end%>
+                <td><%= event.event_date %></td>
+                <%if event.description%>
+                  <td><%= event.description.truncate(25, :omission => "...") %><%= link_to '(continua)', event %></td>
+                <%else%>
+                  <td>N/A</td>
+                <%end%>
+
+                <%if event.crime%>
+                  <td><%= event.crime.crime %></td>
+                <%else%>
+                  <td>no especificado</td>
+                <%end%>
+                <%if current_user.role.supervisor==true|| current_user.role.super_admin==true %>
+                  <td><%= event.analyst.analyst %></td>
+                <%end%>
+                <td>
+                  <ul class="nav nav-pills">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <%if can? :show, Event%>
+                          <li><%= link_to 'Mostrar', event %></li>
+                        <%end%>
+                        <%if can? :edit, Event%>
+                          <li><%= link_to 'Editar', edit_event_path(event) %></li>
+                        <%end%>
+                        <%if can? :destroy, Event%>
+                          <li><%= link_to t(:destroy), event, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
+                        <%end%>
+                      </ul>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            <%end%>
+          <%end%>
+        </tbody>
+      <%end%>
+    </table>
+  </div>
+  <br />
+  <%if can? :create, Event%>
+    <%= link_to t(:wnew)+" "+t(:wevent), new_event_path, :class => "btn btn-primary" %>
+  <%end%>

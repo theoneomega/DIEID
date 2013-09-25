@@ -107,87 +107,97 @@
         <%= @event.status.description %>
       <%end%>
     </p>
-
-    <div class="block">
-      <a href="#victims" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10001).count, "Victima") %></a>
-      <div id="victims" class="block-body collapse">
-        <div class="control-group">
-          <%@event.person.where(:status_id => 10001).each do |person|%>
-            <ul class="inline">
-              <li><i class="icon-user"> </i> </i> <%=person.fullname %></li>
-            </ul>
-          <%end%>
+    <%if @event.person.where(:status_id=>10001).count >0 %>
+      <div class="block">
+        <a href="#victims" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10001).count, "Victima") %></a>
+        <div id="victims" class="block-body collapse">
+          <div class="control-group">
+            <%@event.person.where(:status_id => 10001).each do |person|%>
+              <ul class="inline">
+                <li><i class="icon-user"> </i> </i> <%=person.fullname %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
+    <%end%>
 
-    <div class="block">
-      <a href="#detained" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10000).count, "Detenido") %></a>
-      <div id="detained" class="block-body collapse">
-        <div class="control-group">
-          <%@event.person.where(:status_id => 10000).each do |person|%>
-            <ul>
-              <li><%=person.fullname %></li>
-            </ul>
-          <%end%>
+    <%if @event.person.where(:status_id=>10000).count>0%>
+      <div class="block">
+        <a href="#detained" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10000).count, "Detenido") %></a>
+        <div id="detained" class="block-body collapse">
+          <div class="control-group">
+            <%@event.person.where(:status_id => 10000).each do |person|%>
+              <ul>
+                <li><%=person.fullname %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
+    <%end%>
 
-    <div class="block">
-      <a href="#suspects" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10002).count, "Sospechoso") %></a>
-      <div id="suspects" class="block-body collapse">
-        <div class="control-group">
-          <%@event.person.where(:status_id => 10002).each do |person|%>
-            <ul class="inline">
-              <li><i class="icon-paper-clip"> </i><%=person.fullname %></li>
-            </ul>
-          <%end%>
+    <%if @event.person.where(:status_id=>10002).count > 0%>
+      <div class="block">
+        <a href="#suspects" class="block-heading" data-toggle="collapse"><%= pluralize(@event.person.where(:status_id=>10002).count, "Sospechoso") %></a>
+        <div id="suspects" class="block-body collapse">
+          <div class="control-group">
+            <%@event.person.where(:status_id => 10002).each do |person|%>
+              <ul class="inline">
+                <li><i class="icon-paper-clip"> </i><%=person.fullname %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
+    <%end%>
 
-    <div class="block">
-      <a href="#vehicles" class="block-heading" data-toggle="collapse"><%= pluralize(@event.vehicles.count, "Vehiculo")%></a>
-      <div id="vehicles" class="block-body collapse">
-        <div class="control-group">
-          <%@event.vehicles.each do |vehicle|%>
-            <ul>
-              <li><%=vehicle.fulldescription %></li>
-            </ul>
-          <%end%>
+    <%if @event.vehicles.count > 0%>
+      <div class="block">
+        <a href="#vehicles" class="block-heading" data-toggle="collapse"><%= pluralize(@event.vehicles.count, "Vehiculo")%></a>
+        <div id="vehicles" class="block-body collapse">
+          <div class="control-group">
+            <%@event.vehicles.each do |vehicle|%>
+              <ul>
+                <li><%=vehicle.fulldescription %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
+    <%end%>
 
-    <div class="block">
-      <a href="#weapons" class="block-heading" data-toggle="collapse"><%= pluralize(@event.weapons.count, "Arma")%></a>
-      <div id="weapons" class="block-body collapse">
-        <div class="control-group">
-          <%@event.weapons.each do |weapon|%>
-            <ul>
-              <li><%=weapons.fulldescription %></li>
-            </ul>
-          <%end%>
+    <%if @event.weapons.count > 0%>
+      <div class="block">
+        <a href="#weapons" class="block-heading" data-toggle="collapse"><%= pluralize(@event.weapons.count, "Arma")%></a>
+        <div id="weapons" class="block-body collapse">
+          <div class="control-group">
+            <%@event.weapons.each do |weapon|%>
+              <ul>
+                <li><%=weapons.fulldescription %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
+    <%end%>
 
-    <div class="block">
-      <a href="#drugs" class="block-heading" data-toggle="collapse"><%= pluralize(@event.drug.count, "Droga")%></a>
-      <div id="drugs" class="block-body collapse">
-        <div class="control-group">
-          <%@event.drug.each do |drugs|%>
-            <ul>
-              <li><%drugs.kind %></li>
-            </ul>
-          <%end%>
+    <%if @event.drug.count > 0%>
+      <div class="block">
+        <a href="#drugs" class="block-heading" data-toggle="collapse"><%= pluralize(@event.drug.count, "Droga")%></a>
+        <div id="drugs" class="block-body collapse">
+          <div class="control-group">
+            <%@event.drug.each do |drugs|%>
+              <ul>
+                <li><%drugs.kind %></li>
+              </ul>
+            <%end%>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<%end%>
 
-
-<%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> |
-<%= link_to 'Back', events_path,:class => "btn btn-danger" %>
+<%= link_to 'Editar', edit_event_path(@event), :class => "btn btn-primary" %> |
+<%= link_to 'Regresar', events_path,:class => "btn btn-danger" %>

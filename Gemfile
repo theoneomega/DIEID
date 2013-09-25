@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-
+gem "ransack", github: "ernie/ransack"  # Track git repo
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -43,6 +43,7 @@ gem 'awesome_nested_fields'
 gem 'cocoon'
 gem 'cancan'
 gem "rolify"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

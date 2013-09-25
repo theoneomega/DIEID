@@ -5,32 +5,29 @@
     <div class="control-group">
 
       <div class="field">
-        <%= f.label :brand %><br />
+        <%= f.label "Marca" %><br />
         <%= f.text_field :brand %>
       </div>
       <div class="field">
-        <%= f.label :model %><br />
+        <%= f.label "Modelo" %><br />
         <%= f.text_field :model %>
       </div>
       <div class="field">
-        <%= f.label :serial_number %><br />
+        <%= f.label "Numeor de serie" %><br />
         <%= f.text_field :serial_number %>
       </div>
+   
       <div class="field">
-        <%= f.label :weapon %><br />
-        <%= f.text_field :weapon %>
-      </div>
-      <div class="field">
-        <%= f.label :caliber %><br />
+        <%= f.label "Calibre" %><br />
         <%= f.text_field :caliber %>
       </div>
 
       <div class="field">
-        <%= f.label :person_id %><br />
+        <%= f.label "Persona" %><br />
         <%= f.collection_select(:person_id, Person.all, :id, :fullname, {:prompt => "seleccione persona"}) %>
       </div>
       <div class="field">
-        <%= f.label :weapon_type_id %><br />
+        <%= f.label "Tipo" %><br />
         <%= f.collection_select(:weapon_type_id, WeaponType.all, :id, :desc, {:prompt => "seleccione tipo de arma"}) %>
       </div>
       <%=f.link_to_remove "Remover Arma",:class => 'btn btn-danger'%>

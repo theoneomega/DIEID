@@ -1,5 +1,14 @@
-Sied::Application.routes.draw do
+Sied::Application.routes.draw do 
 
+  get "testfullevents/index"
+
+  resources :fullevents
+
+
+  get "fullevents/index"
+
+#  map.connect ':controller/:action.:format'
+#  match "/:controller(/:action)(.:format)"
   resources :roles
 
 
