@@ -5,6 +5,7 @@ class Vehicle < ActiveRecord::Base
   has_many :event_vehicles, :dependent => :destroy
   has_many :criminal_vehicle, :dependent => :destroy
   has_many :events
+  has_many :fullevent
   
   def fulldescription
     self.brand + " " + self.line + " " + self.model.to_s + " "+ self.color

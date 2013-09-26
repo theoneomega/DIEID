@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @search = Event.search(params[:q])
+    @search = Event.ransack(params[:q])
     @events = @search.result(distinct: true)
 
     respond_to do |format|

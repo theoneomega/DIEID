@@ -15,6 +15,10 @@ class Person < ActiveRecord::Base
   validates :last_name1, :presence => {:message => 'debes introducir apellido'}
   validates :last_name2, :presence => {:message => 'debes introducir apellido'}
   
+  def self.ransackable_attributes(auth_object = nil)
+    ['first_name','last_name1','alias','ci','last_name2']
+  end
+  
   def fullname
     first_name.titlecase + " " + last_name1.titlecase + " " + last_name2.titlecase
   end

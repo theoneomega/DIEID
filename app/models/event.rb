@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :drug, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :weapons, :allow_destroy => true, :reject_if => :all_blank
   
-  def name_cont
-    
-  end
+#  def self.ransackable_attributes(auth_object = nil)
+#    ['description','source','street','suburb','area']
+#  end
 end

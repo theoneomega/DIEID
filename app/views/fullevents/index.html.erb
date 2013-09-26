@@ -6,82 +6,89 @@
   </ul>
 <%end%>
 <div class="well">
+
+
+
   <div class="well">
-    <%= search_form_for @search do |f| %>
-      <div class="field">
-        <%=f.label :descripcion, "Descripcion contiene"%>
-        <%=f.text_field :crime_id_cont%>
-      </div>
-      <div class="actions">
-        <%= f.submit "Search" %>
-      </div>
-    <%end%>
-</div>
 
-<div class="well">
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th><%=sort_link @search, :priority_id, "Prioridad" %></th>
-        <th><%=sort_link @search, :status_id, "Estatus" %></th>
-        <th><%=sort_link @search, :event_date, "Fecha" %></th>
-        <th><%="Descripcion" %></th>
-        <th><%=sort_link @search, :crime_id, "Delito" %></th>
-        <th><%=sort_link @search, :analyst_id, "Analista" %></th>
-        <th><%= t(:actions) %></th>
-      </tr>
-    </thead>
-    <% @fullevents.each do |fullevent| %>
-      <tbody>
+
+    <%#= search_form_for @search, :url => search_fullevents_path, :html => {:method => :post} do |f| %>
+    <%= search_form_for @search, :url => search_fullevents_path, :html => {:method => :post} do |f| %>
+      <%#= f.condition_fields do |c| %>
+        <%#= render "condition_fields", f: c %>
+      <%# end %>
+      <%=f.label :crimen_contiene%> <%= f.text_field :person_first_name_cont %>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+
+
+  </div>
+
+  <div class="well">
+    <table class="table table-condensed">
+      <thead>
         <tr>
-          <%if can? :read, Fullevent%>
-            <%if fullevent.priority_id==10000%>
-              <td><span class="label label-important"><%= fullevent.priority.description %></span></td>
-            <%elsif fullevent.priority_id==10001%>
-              <td><span class="label label-warning"><%= fullevent.priority.description %></span></td>
-            <%else%>
-              <td><span class="label label-inverse"><%= fullevent.priority.description %></span></td>
-            <%end%>
-            <%if fullevent.status%>
-              <td><%= fullevent.status.description %></td>
-            <%else%>
-              <td>sin estatus</td>
-            <%end%>
-            <td><%= fullevent.event_date %></td>
-            <%if fullevent.description%>
-              <td><%= fullevent.description.truncate(25, :omission => "...") %><%= link_to '(continua)', fullevent %></td>
-            <%else%>
-              <td>N/A</td>
-            <%end%>
+          <th><%=sort_link @search, :priority_id, "Prioridad" %></th>
+          <th><%=sort_link @search, :status_id, "Estatus" %></th>
+          <th><%=sort_link @search, :event_date, "Fecha" %></th>
+          <th><%="Descripcion" %></th>
+          <th><%=sort_link @search, :crime_id, "Delito" %></th>
+          <th><%=sort_link @search, :analyst_id, "Analista" %></th>
+          <th><%= t(:actions) %></th>
+        </tr>
+      </thead>
+      <% @fullevents.each do |fullevent| %>
+        <tbody>
+          <tr>
+            <%#if can? :read, Fullevent%>
+              <%if fullevent.priority_id==10000%>
+                <td><span class="label label-important"><%= fullevent.priority.description %></span></td>
+              <%elsif fullevent.priority_id==10001%>
+                <td><span class="label label-warning"><%= fullevent.priority.description %></span></td>
+              <%else%>
+                <td><span class="label label-inverse"><%= fullevent.priority.description %></span></td>
+              <%end%>
+              <%if fullevent.status%>
+                <td><%= fullevent.status.description %></td>
+              <%else%>
+                <td>sin estatus</td>
+              <%end%>
+              <td><%= fullevent.event_date %></td>
+              <%if fullevent.description%>
+                <td><%= fullevent.description.truncate(25, :omission => "...") %><%= link_to '(continua)', fullevent %></td>
+              <%else%>
+                <td>N/A</td>
+              <%end%>
 
-            <%if fullevent.crime%>
-              <td><%= fullevent.crime.crime %></td>
-            <%else%>
-              <td>no especificado</td>
-            <%end%>
-            <td><%= fullevent.analyst.analyst %></td>
-            <td>
-              <ul class="nav nav-pills">
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <%if can? :show, Fullevent%>
-                      <li><%= link_to 'Mostrar', fullevent %></li>
-                    <%end%>
-                    <%if can? :edit, Fullevent%>
-                      <li><%= link_to 'Editar', edit_fullevent_path(fullevent) %></li>
-                    <%end%>
-                    <%if can? :destroy, Fullevent%>
-                      <li><%= link_to t(:destroy), fullevent, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
-                    <%end%>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        <%end%>
-      <%end%>
-    </tbody>
-  </table>
+              <%if fullevent.crime%>
+                <td><%= fullevent.crime.crime %></td>
+              <%else%>
+                <td>no especificado</td>
+              <%end%>
+              <td><%= fullevent.analyst.analyst %></td>
+              <td>
+                <ul class="nav nav-pills">
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <%if can? :show, Fullevent%>
+                        <li><%= link_to 'Mostrar', fullevent %></li>
+                      <%end%>
+                      <%if can? :edit, Fullevent%>
+                        <li><%= link_to 'Editar', edit_fullevent_path(fullevent) %></li>
+                      <%end%>
+                      <%if can? :destroy, Fullevent%>
+                        <li><%= link_to t(:destroy), fullevent, method: :delete, data: { confirm: '¿Estas seguro?' } %></li>
+                      <%end%>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          <%end%>
+        <%#end%>
+      </tbody>
+    </table>
+  </div>
 </div>
 

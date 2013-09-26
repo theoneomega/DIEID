@@ -1,11 +1,13 @@
 Sied::Application.routes.draw do 
 
-  get "testfullevents/index"
+#  get "testfullevents/index"
 
-  resources :fullevents
+  resources :fullevents do
+    collection { post :search, to: 'fullevents#index' }
+  end
 
 
-  get "fullevents/index"
+#  get "fullevents/index"
 
 #  map.connect ':controller/:action.:format'
 #  match "/:controller(/:action)(.:format)"

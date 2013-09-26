@@ -1,5 +1,10 @@
 class Fullevent < ActiveRecord::Base
-  attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description, :event_date, :id, :interior_number, :locality, :observations, :place_id, :priority_id, :prioteger, :source, :status_id, :street, :suburb, :township_id
+  attr_accessible :analyst_id, :area_id 
+  attr_accessible :backup_file, :crime_id, :description, :event_date, :id 
+  attr_accessible :interior_number, :locality, :observations, :place_id 
+  attr_accessible :priority_id, :source, :status_id, :street 
+  attr_accessible :suburb, :township_id, :person_attributes, :fullname, :crimes_attributes
+  
   belongs_to :priority
   belongs_to :crime
   has_many :event_person, :dependent => :destroy
@@ -15,4 +20,12 @@ class Fullevent < ActiveRecord::Base
   belongs_to :analyst 
   belongs_to :township
   belongs_to :place
+  
+#  def crime
+#    self.crime.crime
+#  end
+  
+  def self.ransackable_attributes(auth_object = nil)
+    ['crime','description','source','street','suburb']
+  end
 end
