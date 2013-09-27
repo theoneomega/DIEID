@@ -4,9 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @search = Event.ransack(params[:q])
-    @events = @search.result(distinct: true)
-
+    #    @search = Event.ransack(params[:q])
+    if current_user.role.super_admin==true || current_user.role.supervisor==true
+      @events=Event.order('priority_id').all
+    else
+      @events = Event.where("(analyst_id = #{current_user.analyst_id})").order('priority_id ASC')
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

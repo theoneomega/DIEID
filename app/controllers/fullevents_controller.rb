@@ -2,7 +2,7 @@ class FulleventsController < ApplicationController
   # GET /fullevents
   # GET /fullevents.json
   def index
-    @search = Event.ransack(params[:q])
+    @search = Fullevent.search(params[:q])
     @fullevents = @search.result(distinct: true)
 #    @search.build_condition if @search.conditions.empty?
 #    @search.build_sort if @search.sorts.empty?

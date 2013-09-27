@@ -27,16 +27,16 @@
 <%#end%>
   <table class="table table-condensed">
     <thead>
-      <tr>
-        <th><%=sort_link @search, :priority_id, "Prioridad" %></th>
-        <th><%=sort_link @search, :status_id, "Estatus" %></th>
-        <th><%=sort_link @search, :event_date, "Fecha" %></th>
-        <th><%="Descripcion" %></th>
-        <th><%=sort_link @search, :crime_id, "Delito" %></th>
-        <th><%=sort_link @search, :analyst_id, "Analista" %></th>
-        <th><%= t(:actions) %></th>
-      </tr>
-    </thead>
+        <tr>
+          <th><%= "Prioridad" %></th>
+          <th><%= "Estatus" %></th>
+          <th><%= "Fecha" %></th>
+          <th><%="Descripcion" %></th>
+          <th><%= "Delito" %></th>
+          <th><%= "Analista" %></th>
+          <th><%= t(:actions) %></th>
+        </tr>
+      </thead>
     <% @events.each do |event| %>
       <tbody>
         <tr>

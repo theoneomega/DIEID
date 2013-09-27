@@ -1,3 +1,4 @@
+show
 <%content_for :breadcrumb do%>
   <ul class="breadcrumb">
     <li><%=link_to t(:home), root_path %><span class="divider">/</span> </li>
@@ -50,7 +51,7 @@
 
     <p>
       <b>Localidad: </b>
-      <%= @event.locality %>
+      <%= @event.locality.locality %>
     </p>
 
     <p>
@@ -174,7 +175,7 @@
           <div class="control-group">
             <%@event.weapons.each do |weapon|%>
               <ul>
-                <li><%=weapons.fulldescription %></li>
+                <li><%=weapon.fulldescription %></li>
               </ul>
             <%end%>
           </div>
