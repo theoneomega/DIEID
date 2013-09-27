@@ -12,15 +12,13 @@ class Ability
         can :manage, :all
         cannot [:destroy, :edit], Fullevent
       elsif @user.role.analyst == true
-        can :update, Event
-        can :read, Event
-        can :create, Event
-        can :index, Fullevent
+        can [:index, :edit], Event, :analyst_id => @user.analyst_id
       elsif @user.role.supervisor == true
         can [:read, :update, :destroy, :create], Event
         can :index, Fullevent
       elsif @user.role.medios == true
-        can [:read, :create, :update], Event
+#        can :read, Event, :analyst_id => @user.analyst_id
+        can [:read, :create, :update], Event, :analyst_id => @user.analyst_id
         can [:index, :read], Fullevent
       end
 

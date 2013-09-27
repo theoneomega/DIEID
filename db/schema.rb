@@ -13,21 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130923221211) do
 
-  create_table "active_admin_comments", :force => true do |t|
-    t.string   "resource_id",                                  :null => false
-    t.string   "resource_type",                                :null => false
-    t.integer  "author_id",     :precision => 38, :scale => 0
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.string   "namespace"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "i_act_adm_com_aut_typ_aut_id"
-  add_index "active_admin_comments", ["namespace"], :name => "i_act_adm_com_nam"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "i_adm_not_res_typ_res_id"
-
   create_table "addresses", :force => true do |t|
     t.string   "street"
     t.integer  "interior_number", :precision => 38, :scale => 0
@@ -37,28 +22,10 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
     t.datetime "updated_at",                                     :null => false
   end
 
-  create_table "admin_users", :force => true do |t|
-    t.string   "email",                                                 :default => "", :null => false
-    t.string   "encrypted_password",                                    :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :precision => 38, :scale => 0, :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                            :null => false
-    t.datetime "updated_at",                                                            :null => false
-  end
-
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
-  add_index "admin_users", ["reset_password_token"], :name => "i_adm_use_res_pas_tok", :unique => true
-
   create_table "analysts", :force => true do |t|
     t.string   "analyst"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "areas", :force => true do |t|
@@ -69,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
 
   create_table "crimes", :force => true do |t|
     t.string   "crime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "criminal_drugs", :force => true do |t|
@@ -163,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
     t.text     "observations"
     t.string   "backup_file"
     t.string   "source"
+    t.integer  "analist_id",      :precision => 38, :scale => 0
     t.integer  "area_id",         :precision => 38, :scale => 0
     t.integer  "crime_id",        :precision => 38, :scale => 0
     t.integer  "township_id",     :precision => 38, :scale => 0
@@ -176,8 +144,8 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
   create_table "localities", :force => true do |t|
     t.integer  "township_id", :precision => 38, :scale => 0
     t.string   "locality"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -199,8 +167,8 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
 
   create_table "places", :force => true do |t|
     t.string   "place"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "priorities", :force => true do |t|
@@ -232,8 +200,8 @@ ActiveRecord::Schema.define(:version => 20130923221211) do
   create_table "townships", :force => true do |t|
     t.integer  "di",         :precision => 38, :scale => 0
     t.string   "township"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "users", :force => true do |t|

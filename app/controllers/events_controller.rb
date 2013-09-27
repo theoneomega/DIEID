@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
-#  load_and_authorize_resource
+  load_and_authorize_resource
   # GET /events
   # GET /events.json
   def index
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-
+    @event.description = @event.description.upcase
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
