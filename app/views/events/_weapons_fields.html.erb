@@ -1,39 +1,42 @@
-
 <div class="block">
+
   <a href="#weapons" class="block-heading" data-toggle="collapse">Armas</a>
+
   <div id="weapons" class="block-body collapse in">
     <div class="control-group">
 
       <div class="field">
-        <%= f.label :Marca %><br />
+
+        <%= f.label "Marca" %><br />
         <%= f.text_field :brand %>
       </div>
       <div class="field">
-        <%= f.label :Modelo %><br />
+        <%= f.label "Modelo" %><br />
         <%= f.text_field :model %>
       </div>
       <div class="field">
-        <%= f.label :Serie %><br />
+        <%= f.label "Numeor de serie" %><br />
+
         <%= f.text_field :serial_number %>
       </div>
+   
       <div class="field">
-        <%= f.label :Arma %><br />
-        <%= f.text_field :weapon %>
-      </div>
-      <div class="field">
-        <%= f.label :Calibre %><br />
+
+        <%= f.label "Calibre" %><br />
+
         <%= f.text_field :caliber %>
       </div>
 
       <div class="field">
-        <%= f.label :Persona %><br />
+
+        <%= f.label "Persona" %><br />
         <%= f.collection_select(:person_id, Person.all, :id, :fullname, {:prompt => "seleccione persona"}) %>
       </div>
       <div class="field">
-        <%= f.label :Tipo_de_arma %><br />
+        <%= f.label "Tipo" %><br />
         <%= f.collection_select(:weapon_type_id, WeaponType.all, :id, :desc, {:prompt => "seleccione tipo de arma"}) %>
       </div>
-      <%=f.link_to_remove "remove weapon",:class => 'btn btn-danger'%>
+      <%=f.link_to_remove "Remover Arma",:class => 'btn btn-danger'%>
     </div>
   </div>
 </div>

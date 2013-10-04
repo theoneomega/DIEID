@@ -47,8 +47,13 @@
         <%= f.text_field :suburb %>
       </div>
       <div class="field">
-        <%= f.label :Localidad %><br />
-        <%= f.text_field :locality %>
+        <%= f.label :Municipio %><br />
+        <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "Seleccione Municipio"}) %>
+      </div>
+      <div class="field">
+        <label for="event_locality_id">Localidad</label>
+  <%#= f.text_field :locality %>
+        <%= f.collection_select(:locality_id, Locality.all, :id, :locality, {:prompt => "Seleccione Localidad"}) %>
       </div>
       <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
 
@@ -111,15 +116,12 @@
         <%= f.label :Delito %><br />
         <%= f.collection_select(:crime_id, Crime.all, :id, :crime, {:prompt => "seleccione crimen"}) %>
       </div>
-      <div class="field">
-        <%= f.label :Municipio %><br />
-        <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "seleccione municipio"}) %>
-      </div>
+
       <div class="field">
         <%= f.label :Lugar %><br />
         <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
       </div>
-       <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+      <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
         <div class="field">
           <%= f.label :status_id %><br />
           <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>

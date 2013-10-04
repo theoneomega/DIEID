@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-
+gem "ransack", github: "ernie/ransack"  # Track git repo
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'thin'
 gem 'ruby-oci8', '~> 2.1.0'
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'devise'

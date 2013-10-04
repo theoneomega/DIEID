@@ -1,14 +1,19 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
-#  load_and_authorize_resource
+  load_and_authorize_resource
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order('priority_id').all
-
+    #    @search = Event.ransack(params[:q])
+    if current_user.role.super_admin==true || current_user.role.supervisor==true
+      @events=Event.order('priority_id').all
+    else
+      @events = Event.where("(analyst_id = #{current_user.analyst_id})").order('priority_id ASC')
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
+      
     end
   end
 
@@ -43,9 +48,10 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-
+    @event.description = @event.description.upcase
     respond_to do |format|
       if @event.save
+        UserMailer.registration_confirmation(@user).deliver 
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else

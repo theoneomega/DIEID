@@ -1,10 +1,6 @@
 class Event < ActiveRecord::Base
-  attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description
-  attr_accessible :detained, :detained_id, :drug_id, :drugs, :event_date, :id
-  attr_accessible :interior_number, :locality, :observations, :place_id, :priority_id
-  attr_accessible:source, :status_id, :street, :suburb, :suspect_id, :suspects, :township_id
-  attr_accessible :vehicle_id, :vehicles, :victim_id, :victims, :weapon_id, :weapons, :person_attributes
-  
+  attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description, :detained, :drug_id, :drugs, :event_date, :id, :interior_number, :locality, :locality_id, :observations, :person_id, :place_id, :priority_id, :source, :status_id, :street, :suburb, :suspects, :township_id, :vehicle_id, :vehicles, :victims, :weapon_id, :weapons
+  attr_accessible :person_attributes
   belongs_to :priority
   belongs_to :crime
   has_many :event_person, :dependent => :destroy
@@ -20,10 +16,12 @@ class Event < ActiveRecord::Base
   belongs_to :analyst 
   belongs_to :township
   belongs_to :place
+  belongs_to :locality
   
   validates :priority, :presence => true
   validates :description, :presence => true
   validates :area_id, :presence => true
+  validates :locality, :presence => true
   
   accepts_nested_attributes_for :person, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :vehicles, :allow_destroy => true, :reject_if => :all_blank

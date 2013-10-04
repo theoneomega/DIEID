@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920220215) do
+ActiveRecord::Schema.define(:version => 20130927160301) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",                                  :null => false
@@ -149,6 +149,38 @@ ActiveRecord::Schema.define(:version => 20130920220215) do
     t.string   "suburb"
     t.string   "locality"
     t.boolean  "victims",         :precision => 1,  :scale => 0
+    t.boolean  "detained",        :precision => 1,  :scale => 0
+    t.boolean  "suspects",        :precision => 1,  :scale => 0
+    t.integer  "person_id",       :precision => 38, :scale => 0
+    t.boolean  "vehicles",        :precision => 1,  :scale => 0
+    t.integer  "vehicle_id",      :precision => 38, :scale => 0
+    t.boolean  "drugs",           :precision => 1,  :scale => 0
+    t.string   "drug_id"
+    t.boolean  "weapons",         :precision => 1,  :scale => 0
+    t.integer  "weapon_id",       :precision => 38, :scale => 0
+    t.text     "observations"
+    t.string   "backup_file"
+    t.string   "source"
+    t.integer  "area_id",         :precision => 38, :scale => 0
+    t.integer  "crime_id",        :precision => 38, :scale => 0
+    t.integer  "township_id",     :precision => 38, :scale => 0
+    t.integer  "locality_id",     :precision => 38, :scale => 0
+    t.integer  "place_id",        :precision => 38, :scale => 0
+    t.integer  "analyst_id",      :precision => 38, :scale => 0
+    t.integer  "status_id",       :precision => 38, :scale => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  create_table "fullevents", :force => true do |t|
+    t.integer  "priority_id",     :precision => 38, :scale => 0
+    t.datetime "event_date"
+    t.text     "description"
+    t.string   "street"
+    t.string   "interior_number"
+    t.string   "suburb"
+    t.string   "locality"
+    t.boolean  "victims",         :precision => 1,  :scale => 0
     t.integer  "victim_id",       :precision => 38, :scale => 0
     t.boolean  "detained",        :precision => 1,  :scale => 0
     t.integer  "detained_id",     :precision => 38, :scale => 0
@@ -252,6 +284,9 @@ ActiveRecord::Schema.define(:version => 20130920220215) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "role_id",                :precision => 38, :scale => 0
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
