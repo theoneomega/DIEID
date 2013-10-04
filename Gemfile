@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem "ransack", github: "ernie/ransack"  # Track git repo
+gem "ransack"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'thin'
@@ -40,7 +40,6 @@ gem "nested_form"
 gem 'ckeditor_rails'
 gem 'yaml_db'
 gem 'awesome_nested_fields'
-gem 'cocoon'
 gem 'cancan'
 gem "rolify"
 # To use ActiveModel has_secure_password

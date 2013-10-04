@@ -1,5 +1,7 @@
 Sied::Application.routes.draw do 
 
+  get "fullevent/index"
+
   resources :events
 
 

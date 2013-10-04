@@ -10,7 +10,7 @@ class Ability
     unless @user.blank?
       if @user.role.super_admin == true
         can :manage, :all
-        cannot [:destroy, :edit], Fullevent
+#        cannot [:destroy, :edit], Fullevent
       elsif @user.role.analyst == true
         can [:index, :edit], Event, :analyst_id => @user.analyst_id
       elsif @user.role.supervisor == true

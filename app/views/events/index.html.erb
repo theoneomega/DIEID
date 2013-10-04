@@ -93,3 +93,7 @@
 <%if can? :create, Event%>
   <%= link_to t(:wnew)+" "+t(:wevent), new_event_path, :class => "btn btn-primary" %>
 <%end%>
+
+<div class="page_info">
+<%#= will_paginate @events, 3%>
+</div>
