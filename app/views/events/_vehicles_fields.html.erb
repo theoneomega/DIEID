@@ -40,7 +40,7 @@
           <%= f.label :person_id %><br />
           <%= f.collection_select(:person_id, Person.all, :id, :fullname, {:prompt => "seleccione persona"}) %>
         </div>
-        <%=f.link_to_remove "remove vehicle",:class => 'btn btn-danger'%>
+        <%=f.link_to_remove "Eliminar Vehiculo",:class => 'btn btn-danger'%>
       </div>
     </div>
   </div>
