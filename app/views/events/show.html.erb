@@ -7,14 +7,7 @@ show
   </ul>
 <%end%>
 
-<% if flash[:notice] %>
-  <div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">×</button>
-    <%= flash[:notice] %>
-  <% end %>
-  <% if flash[:error] %>
-    <h3 class="error_box"><%= flash[:error] %></h3>
-  <% end %>
-</div>
+
 <div class="block">
   <p class="block-heading"><i class="icon-eye-open"> </i><%= eval("t(:w" + controller_name + ")").singularize %> <%= @event.id %></p>
   <div class="block-body">

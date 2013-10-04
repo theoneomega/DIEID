@@ -80,10 +80,10 @@
                   <%end%>
                 </li>
                 <li class="divider"></li>
-                <li><%= link_to destroy_user_session_path do%>
+                <li><%= link_to destroy_user_session_path,  :method => :delete do%>
                     <i class="icon-signout"></i><%= " Cerrar Sesión "  + current_user.analyst.analyst%>
                   <%end%>
-                </li>                
+                </li>             
               </ul>
             </li>
           <%end%>

@@ -24,7 +24,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
    config.authentication_keys = [ :username ]
-
+config.secret_key = '08133c583e290c6c14d893f309e29e3bdf483695c386eee07579f80cb93552271eea72fe2f91b2143e5646c9dee1d8907617987fc5832ba9fff7e59d2e26d043'
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -124,7 +124,7 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # If true, extends the user's remember period when remembered via cookie.
-   config.extend_remember_period = true
+#   config.extend_remember_period = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -154,7 +154,7 @@ Devise.setup do |config|
    config.lock_strategy = :failed_attempts
 
   # Defines which key will be used when locking and unlocking an account
-   config.unlock_keys = [ :email ]
+#   config.unlock_keys = [ :email ]
 
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
