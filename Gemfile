@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem "ransack"
+gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'thin'
+# gem 'thin'
 gem 'ruby-oci8', '~> 2.1.0'
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'devise'
@@ -16,8 +17,7 @@ gem 'will_paginate-bootstrap'
 #gem "less-rails"
 gem 'therubyracer'
 gem 'bootstrap-datetimepicker-rails'
-gem 'seed_dumper'
-
+gem 'best_in_place'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

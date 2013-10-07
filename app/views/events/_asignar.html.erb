@@ -1,0 +1,4 @@
+<div class="field">
+  <%= f.label "Analista" %><br />
+  <%= f.collection_select(:analyst_id, Analyst.all, :id, :description, {:prompt => @event.analyst.analyst}) %>
+</div>

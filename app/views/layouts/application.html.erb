@@ -146,7 +146,7 @@
           <li><%= link_to "Roles", roles_path %></li>
         <%end%>
         <% if signed_in? %>
-          <li><%= link_to "Todos los eventos", fullevents_path %></li>
+          <li><%= link_to "Todos los eventos", "events_collection/index" %></li>
         <%end%>
       </ul>
 

@@ -19,7 +19,7 @@ class Ability
       elsif @user.role.medios == true
 #        can :read, Event, :analyst_id => @user.analyst_id
         can [:read, :create, :update], Event, :analyst_id => @user.analyst_id
-        can [:index, :read], Fullevent
+#        can [:index, :read], Fullevent
       end
 
     end

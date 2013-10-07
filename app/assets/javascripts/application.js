@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+////= require jquery.purr
+//= require best_in_place
 //= require jquery_ujs
 //= require jquery-ui
 //= require autocomplete-rails
@@ -18,6 +20,6 @@
 //= require jquery_nested_form
 //= require ckeditor-jquery
 //= require bootstrap-datepicker
-//= require cocoon
+
 //= require bootstrap-datetimepicker
 

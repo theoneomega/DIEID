@@ -1,5 +1,9 @@
 Sied::Application.routes.draw do 
 
+  get "events_collection/index"
+
+  get "events_collection/show"
+
   get "fullevent/index"
 
   resources :events
@@ -7,9 +11,7 @@ Sied::Application.routes.draw do
 
 #  get "testfullevents/index"
 
-  resources :fullevents do
-    collection { post :search, to: 'fullevents#index' }
-  end
+  
 
 
 #  get "fullevents/index"

@@ -15,7 +15,11 @@
       <b>Prioridad:</b>
       <%= @event.priority.description %>
     </p>
-
+    <p>
+      <b>Analyst:</b>
+<%#= best_in_place @event.analyst, :analyst, type: :select, collection: Event.analyst.analyst %>
+<%#= best_in_place @event.analyst, :analyst, type: :select, :collection => @event.analyst.analyst ] %>
+    </p>
     <p>
       <b>Fecha de evento: </b>
       <%= @event.event_date %>
@@ -23,12 +27,12 @@
 
     <p>
       <b>Descripcion: </b>
-      <%= @event.description %>
+      <%= best_in_place @event, :description, :type=> :textarea %>
     </p>
 
     <p>
       <b>Calle: </b>
-      <%= @event.street %>
+      <%= best_in_place @event, :street %>
     </p>
 
     <p>
@@ -61,12 +65,7 @@
       <%= @event.source %>
     </p>
 
-    <p>
-      <b>Analyst:</b>
-      <%if @event.analyst !=nil%>
-        <%= @event.analyst.analyst%>
-      <%end%>
-    </p>
+
 
     <p>
       <b>Area:</b>
@@ -194,3 +193,10 @@
 
 <%= link_to 'Editar', edit_event_path(@event), :class => "btn btn-primary" %> |
 <%= link_to 'Regresar', events_path,:class => "btn btn-danger" %>
+
+<script>
+  $(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
+  });
+</script>

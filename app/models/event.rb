@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
   validates :description, :presence => true
   validates :area_id, :presence => true
   validates :locality, :presence => true
+  validates :analyst_id, :presence =>true
   
   accepts_nested_attributes_for :person, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :vehicles, :allow_destroy => true, :reject_if => :all_blank

@@ -10,135 +10,142 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="block">
+    <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+      <a href="#asignar" class="block-heading" data-toggle="collapse">Asignar</a>
+      <div id="asignar" class="block-body collapse in">
+        <div class="field">
+          <%= f.label "Analista" %><br />
+          <%= f.collection_select(:analyst_id, Analyst.all, :id, :analyst, {:prompt => @event.analyst.analyst}) %>
+        </div>
+      </div>
+    <%end%>
+  </div>
   <div class="block">
     <%if controller.action_name == "edit" or controller.action_name == "update"%>
       <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:edit)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
     <%else%>
       <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:wnew)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
     <%end%>
-    <div id="page-stats" class="block-body collapse in">
+    <div id="page-stats" class="block-body collapse ">
 
-      <div class="field">
-        <%= f.label :Prioridad %><br />
-        <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
-      </div>
-
-
-      <div id="datetimepicker" class="input-append date">
-        <%= f.label :Fecha_de_Evento %><br />
-        <%= f.text_field :event_date%>
-        <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
-      </div>
-
-      <div class="field">
-        <%= f.label :Descripcion %><br />
-        <%= f.text_area :description %>
-        <%#= f.text_area :description, :class => 'ckeditor' %>
-      </div>
-      <div class="field">
-        <%= f.label :Calle %><br />
-        <%= f.text_field :street %>
-      </div>
-      <div class="field">
-        <%= f.label :Numero %><br />
-        <%= f.text_field :interior_number %>
-      </div>
-      <div class="field">
-        <%= f.label :Colonia %><br />
-        <%= f.text_field :suburb %>
-      </div>
-      <div class="field">
-        <%= f.label :Municipio %><br />
-        <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "Seleccione Municipio"}) %>
-      </div>
-      <div class="field">
-        <label for="event_locality_id">Localidad</label>
-  <%#= f.text_field :locality %>
-        <%= f.collection_select(:locality_id, Locality.all, :id, :locality, {:prompt => "Seleccione Localidad"}) %>
-      </div>
-      <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
-
-      <p>
-        <%=f.fields_for :person do |builder| %>
-          <%= render 'people_fields', :f => builder %>
-        <%end%>
-      </p>
-
-      <p>
-        <%=f.fields_for :vehicles do |builder| %>
-          <%= render 'vehicles_fields', :f => builder %>
-        <%end%>
-
-      </p>
-
-      <p>
-        <%=f.fields_for :drug do |builder| %>
-          <%= render 'drug_fields', :f => builder %>
-        <%end%>
-
-
-      <p>
-        <%=f.fields_for :weapons do |builder| %>
-          <%= render 'weapons_fields', :f => builder %>
-        <%end%>
-
-      </p>
-
-
-      <div class="field">
-        <%= f.label :Observaciones %><br />
-        <%= f.text_area :observations %>
-      </div>
-      <div class="field">
-        <%= f.label :Archivo_de_respaldo %><br />
-        <%= f.text_field :backup_file %>
-      </div>
-      <div class="field">
-        <%= f.label :Fuente %><br />
-        <%= f.text_field :source %>
-      </div>
-
-      <%if controller.action_name == "edit" or controller.action_name == "update" and (current_user.role.supervisor==true || current_user.role.super_admin==true)%>
+      <div id="page-stats" class="block-body collapse in">
         <div class="field">
-          <%= f.label :analyst_id %><br />
-          <%= f.collection_select(:analyst_id, Analyst.all, :id, :analyst, {:prompt => @event.analyst.analyst}) %>
+          <%= f.label :Prioridad %><br />
+          <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
         </div>
-      <%else%>
+
+
+        <div id="datetimepicker" class="input-append date">
+          <%= f.label :Fecha_de_Evento %><br />
+          <%= f.text_field :event_date%>
+          <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+        </div>
+
+        <div class="field">
+          <%= f.label :Descripcion %><br />
+          <%= f.text_area :description %>
+  <%#= f.text_area :description, :class => 'ckeditor' %>
+        </div>
+        <div class="field">
+          <%= f.label :Calle %><br />
+          <%= f.text_field :street %>
+        </div>
+        <div class="field">
+          <%= f.label :Numero %><br />
+          <%= f.text_field :interior_number %>
+        </div>
+        <div class="field">
+          <%= f.label :Colonia %><br />
+          <%= f.text_field :suburb %>
+        </div>
+        <div class="field">
+          <%= f.label :Municipio %><br />
+          <%= f.collection_select(:township_id, Township.all, :id, :township, {:prompt => "Seleccione Municipio"}) %>
+        </div>
+        <div class="field">
+          <label for="event_locality_id">Localidad</label>
+  <%#= f.text_field :locality %>
+          <%= f.collection_select(:locality_id, Locality.all, :id, :locality, {:prompt => "Seleccione Localidad"}) %>
+        </div>
+        <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
+
+        <p>
+          <%=f.fields_for :person do |builder| %>
+            <%= render 'people_fields', :f => builder %>
+          <%end%>
+        </p>
+
+        <p>
+          <%=f.fields_for :vehicles do |builder| %>
+            <%= render 'vehicles_fields', :f => builder %>
+          <%end%>
+
+        </p>
+
+        <p>
+          <%=f.fields_for :drug do |builder| %>
+            <%= render 'drug_fields', :f => builder %>
+          <%end%>
+
+
+        <p>
+          <%=f.fields_for :weapons do |builder| %>
+            <%= render 'weapons_fields', :f => builder %>
+          <%end%>
+
+        </p>
+
+
+        <div class="field">
+          <%= f.label :Observaciones %><br />
+          <%= f.text_area :observations %>
+        </div>
+        <div class="field">
+          <%= f.label :Archivo_de_respaldo %><br />
+          <%= f.text_field :backup_file %>
+        </div>
+        <div class="field">
+          <%= f.label :Fuente %><br />
+          <%= f.text_field :source %>
+        </div>
+
+
         <div class="field">
           <%= f.hidden_field :analyst_id, :value => current_user.analyst_id %>
         </div>
-      <%end%>
 
-      <div class="field">
-        <%= f.label :Zona_id %><br />
-        <%= f.collection_select(:area_id, Area.all, :id, :description, {:prompt => "seleccione area"}) %>
-      </div>
-      <div class="field">
-        <%= f.label :Delito %><br />
-        <%= f.collection_select(:crime_id, Crime.all, :id, :crime, {:prompt => "seleccione crimen"}) %>
-      </div>
-
-      <div class="field">
-        <%= f.label :Lugar %><br />
-        <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
-      </div>
-      <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
         <div class="field">
-          <%= f.label :status_id %><br />
-          <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>
+          <%= f.label :Zona_id %><br />
+          <%= f.collection_select(:area_id, Area.all, :id, :description, {:prompt => "seleccione area"}) %>
         </div>
-      <%else%>
-        <%= f.hidden_field :status_id, :value => 10020 %><br />
-      <%end%>
-      <div class="actions">
-        <%= button_tag( :class => "btn btn-primary") do %>
-          <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>
-        <% end %>
-      </div>
-    <% end %>
+        <div class="field">
+          <%= f.label :Delito %><br />
+          <%= f.collection_select(:crime_id, Crime.all, :id, :crime, {:prompt => "seleccione crimen"}) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Lugar %><br />
+          <%= f.collection_select(:place_id, Place.all, :id, :place, {:prompt => "seleccione lugar"}) %>
+        </div>
+        <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+          <div class="field">
+            <%= f.label :status_id %><br />
+            <%= f.collection_select(:status_id, Status.where(:status_type => "evento"), :id, :description, {:prompt => "seleccione el estatus"}) %>
+          </div>
+        <%else%>
+          <%= f.hidden_field :status_id, :value => 10020 %><br />
+        <%end%>
+        <div class="actions">
+          <%= button_tag( :class => "btn btn-primary") do %>
+            <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
 
 
 <script type="text/javascript"

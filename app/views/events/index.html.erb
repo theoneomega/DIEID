@@ -71,6 +71,9 @@
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
                 <ul class="dropdown-menu">
+                  <%if current_user.role.supervisor==true ||current_user.role.super_admin==true %>
+                  <li><%= link_to 'Asignar', edit_event_path(event) %></li>
+                  <%end%>
                   <%if can? :show, Event%>
                     <li><%= link_to 'Mostrar', event %></li>
                   <%end%>
