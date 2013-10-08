@@ -9,13 +9,13 @@ gem 'rails-i18n'
 gem 'ruby-oci8', '~> 2.1.0'
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'devise'
-#gem 'therubyracer', :platform => :ruby
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
 gem 'will_paginate-bootstrap'
 #gem "less-rails"
-gem 'therubyracer'
+gem 'therubyracer', '= 0.11.0beta1'
+gem 'libv8', '= 3.11.8.0'
 gem 'bootstrap-datetimepicker-rails'
 gem 'best_in_place'
 # Gems used only for assets and not required

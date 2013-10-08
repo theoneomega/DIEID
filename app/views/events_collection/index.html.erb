@@ -1,3 +1,12 @@
+ <%#= search_form_for @search, :url => search_fullevents_path, :html => {:method => :post} do |f| %>
+    <%= search_form_for @search, :html => {:method => :post} do |f| %>
+      <%#= f.condition_fields do |c| %>
+        <%#= render "condition_fields", f: c %>
+      <%# end %>
+      <%=f.label :description_cont %> <%= f.text_field :person_first_name_cont %>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+
 <table class="table table-condensed">
   <thead>
     <tr>

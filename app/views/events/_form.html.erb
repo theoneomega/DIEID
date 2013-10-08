@@ -11,26 +11,30 @@
     </div>
   <% end %>
 
-  <div class="block">
-    <%if current_user.role.supervisor==true || current_user.role.super_admin==true%>
+
+  <%if (current_user.role.supervisor==true || current_user.role.super_admin==true)&&(controller.action_name == "edit" or controller.action_name == "update")%>
+    <div class="block">
       <a href="#asignar" class="block-heading" data-toggle="collapse">Asignar</a>
       <div id="asignar" class="block-body collapse in">
         <div class="field">
           <%= f.label "Analista" %><br />
           <%= f.collection_select(:analyst_id, Analyst.all, :id, :analyst, {:prompt => @event.analyst.analyst}) %>
         </div>
-      </div>
-    <%end%>
-  </div>
+      </div> 
+    </div>
+  <%end%>
+
   <div class="block">
     <%if controller.action_name == "edit" or controller.action_name == "update"%>
       <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:edit)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
     <%else%>
       <a href="#page-stats" class="block-heading" data-toggle="collapse"><%=t(:wnew)%> <%= eval("t(:w" + controller_name + ")").singularize %></a>
     <%end%>
-    <div id="page-stats" class="block-body collapse ">
-
+    <%if controller.action_name == "new" or controller.action_name == "create"%>
       <div id="page-stats" class="block-body collapse in">
+      <%else%>
+        <div id="page-stats" class="block-body collapse">
+        <%end%>
         <div class="field">
           <%= f.label :Prioridad %><br />
           <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
@@ -67,7 +71,7 @@
         <div class="field">
           <label for="event_locality_id">Localidad</label>
   <%#= f.text_field :locality %>
-          <%= f.collection_select(:locality_id, Locality.all, :id, :locality, {:prompt => "Seleccione Localidad"}) %>
+          <%= f.collection_select(:locality_id, Locality.all, :id, :locality) %>
         </div>
         <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
 
@@ -111,11 +115,11 @@
           <%= f.text_field :source %>
         </div>
 
-
-        <div class="field">
-          <%= f.hidden_field :analyst_id, :value => current_user.analyst_id %>
-        </div>
-
+        <%if controller.action_name == "new" or controller.action_name == "create"%>
+          <div class="field">
+            <%= f.hidden_field :analyst_id, :value => current_user.analyst_id %>
+          </div>
+        <%end%>
         <div class="field">
           <%= f.label :Zona_id %><br />
           <%= f.collection_select(:area_id, Area.all, :id, :description, {:prompt => "seleccione area"}) %>
@@ -137,17 +141,17 @@
         <%else%>
           <%= f.hidden_field :status_id, :value => 10020 %><br />
         <%end%>
-        <div class="actions">
-          <%= button_tag( :class => "btn btn-primary") do %>
-            <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>
-          <% end %>
-        </div>
-      <% end %>
+
+
+      </div>
     </div>
   </div>
-</div>
-
-
+  <div class="actions">
+    <%= button_tag( :class => "btn btn-primary") do %>
+      <i class="icon-save icon-white"> </i> <%=t(:wsave)%> <%= eval("t(:w" + controller_name + ")").singularize %>
+    <% end %>
+  </div>
+<% end %>
 <script type="text/javascript"
         src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script> 
