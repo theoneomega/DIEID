@@ -1,11 +1,6 @@
 Sied::Application.routes.draw do 
 
-  get "events_collection/index"
-
-  get "events_collection/show"
-
-  get "fullevent/index"
-
+  resources :events_collections
   resources :events
 
 

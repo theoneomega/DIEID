@@ -112,7 +112,7 @@ es:
       format: ! '%{attribute} %{message}'
   
   wdrugs: Drogas
-  wevents_collection: Bitacora de Eventos
+  wevents_collections: Bitacora de Eventos
   wfullevents: Todos los eventos
   username: Usuario
   password_confirmation: Confirme contraseña

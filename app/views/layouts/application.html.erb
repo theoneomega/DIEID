@@ -89,7 +89,7 @@
           <%end%>
         </ul>
         <a class="brand" href="#"><span class="first"> Direccion de Integracion y Evaluacion de Informacion Delictiva </span> <span class="second"></span></a>
-        <%#=image_tag("/assets/logo_corto.png", :style => "margin:.6%;", :size =>"160x50")%>
+<%#=image_tag("/assets/logo_corto.png", :style => "margin:.6%;", :size =>"160x50")%>
       </div>
     </div>
 
@@ -102,6 +102,9 @@
       <ul id="dashboard-menu" class="nav nav-list collapse in">
         <%if signed_in?%>
           <li><%= link_to t(:wevents), events_path%></li>
+        <%end%>
+        <% if signed_in? %>
+          <li><%= link_to "Todos los eventos", events_collections_path %></li>
         <%end%>
         <% if can? :index, Person %>
           <li><%= link_to t(:wpersons), people_path%></li>
@@ -145,9 +148,7 @@
         <% if can? :index, Role %>
           <li><%= link_to "Roles", roles_path %></li>
         <%end%>
-        <% if signed_in? %>
-          <li><%= link_to "Todos los eventos", "events_collection/index" %></li>
-        <%end%>
+
       </ul>
 
       <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i><%=t(:account)%></a>
@@ -249,12 +250,12 @@
         </div>
         <script src="lib/bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript">
-          $("[rel=tooltip]").tooltip();
-          $(function() {
-            $('.demo-cancel-click').click(function() {
-              return false;
-            });
-          });
+      $("[rel=tooltip]").tooltip();
+      $(function() {
+        $('.demo-cancel-click').click(function() {
+          return false;
+        });
+      });
         </script>
 
         </body>

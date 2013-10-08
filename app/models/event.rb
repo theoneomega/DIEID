@@ -28,4 +28,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :vehicles, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :drug, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :weapons, :allow_destroy => true, :reject_if => :all_blank
+  
+ 
 end

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem "ransack"
+#gem "ransack"
 gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,8 +14,8 @@ gem 'bootstrap-timepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
 gem 'will_paginate-bootstrap'
 #gem "less-rails"
-gem 'therubyracer', '= 0.11.0beta1'
-gem 'libv8', '= 3.11.8.0'
+gem 'therubyracer' #, '= 0.11.0beta1'
+gem 'libv8'#, '= 3.11.8.0'
 gem 'bootstrap-datetimepicker-rails'
 gem 'best_in_place'
 # Gems used only for assets and not required
@@ -42,6 +42,8 @@ gem 'yaml_db'
 gem 'awesome_nested_fields'
 gem 'cancan'
 gem "rolify"
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

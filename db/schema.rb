@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927160301) do
+ActiveRecord::Schema.define(:version => 20131008165251) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
 
   create_table "analysts", :force => true do |t|
     t.string   "analyst"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "areas", :force => true do |t|
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "crimes", :force => true do |t|
     t.string   "crime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "criminal_drugs", :force => true do |t|
@@ -139,11 +139,37 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
     t.datetime "updated_at",                                     :null => false
   end
 
+  create_table "events_collections", :force => true do |t|
+    t.integer  "priority_id",     :precision => 38, :scale => 0
+    t.datetime "event_date"
+    t.text     "description"
+    t.string   "street"
+    t.string   "interior_number"
+    t.string   "suburb"
+    t.string   "locality"
+    t.integer  "person_id",       :precision => 38, :scale => 0
+    t.integer  "vehicle_id",      :precision => 38, :scale => 0
+    t.integer  "drug_id",         :precision => 38, :scale => 0
+    t.integer  "weapon_id",       :precision => 38, :scale => 0
+    t.text     "observations"
+    t.string   "backup_file"
+    t.string   "source"
+    t.integer  "area_id",         :precision => 38, :scale => 0
+    t.integer  "crime_id",        :precision => 38, :scale => 0
+    t.integer  "township_id",     :precision => 38, :scale => 0
+    t.integer  "locality_id",     :precision => 38, :scale => 0
+    t.integer  "place_id",        :precision => 38, :scale => 0
+    t.integer  "analyst_id",      :precision => 38, :scale => 0
+    t.integer  "status_id",       :precision => 38, :scale => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
   create_table "localities", :force => true do |t|
     t.integer  "township_id", :precision => 38, :scale => 0
     t.string   "locality"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -165,8 +191,8 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
 
   create_table "places", :force => true do |t|
     t.string   "place"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "priorities", :force => true do |t|

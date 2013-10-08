@@ -35,7 +35,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-
+    @events_collection = EventsCollection.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -50,8 +50,10 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    @events_collection = EventsCollection.new(params[:event])
     @event = Event.new(params[:event])
-#    @event.description = @event.description.upcase
+    @event.description = @event.description.upcase
+    @events_collection.save
     respond_to do |format|
       if @event.save
         UserMailer.event_registration(@event).deliver 
