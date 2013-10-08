@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
 
   create_table "analysts", :force => true do |t|
     t.string   "analyst"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "areas", :force => true do |t|
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "crimes", :force => true do |t|
     t.string   "crime"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "criminal_drugs", :force => true do |t|
@@ -142,8 +142,8 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
   create_table "localities", :force => true do |t|
     t.integer  "township_id", :precision => 38, :scale => 0
     t.string   "locality"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", :force => true do |t|
@@ -165,8 +165,8 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
 
   create_table "places", :force => true do |t|
     t.string   "place"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "priorities", :force => true do |t|
@@ -196,9 +196,10 @@ ActiveRecord::Schema.define(:version => 20130927160301) do
   end
 
   create_table "townships", :force => true do |t|
+    t.integer  "di",         :precision => 38, :scale => 0
     t.string   "township"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

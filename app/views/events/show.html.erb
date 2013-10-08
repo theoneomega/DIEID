@@ -17,6 +17,7 @@
     </p>
     <p>
       <b>Analyst:</b>
+      <%=@event.analyst.analyst%>
 <%#= best_in_place @event.analyst, :analyst, type: :select, collection: Event.analyst.analyst %>
 <%#= best_in_place @event.analyst, :analyst, type: :select, :collection => @event.analyst.analyst ] %>
     </p>
@@ -24,54 +25,44 @@
       <b>Fecha de evento: </b>
       <%= @event.event_date %>
     </p>
-
     <p>
       <b>Descripcion: </b>
       <%= best_in_place @event, :description, :type=> :textarea %>
     </p>
-
     <p>
       <b>Calle: </b>
       <%= best_in_place @event, :street %>
     </p>
-
     <p>
       <b>Numero Interior: </b>
       <%= @event.interior_number %>
     </p>
-
     <p>
       <b>Colonia: </b>
       <%= @event.suburb %>
     </p>
-
     <p>
       <b>Localidad: </b>
-      <%= @event.locality.locality %>
+      <%if @event.locality%>
+        <%= @event.locality.locality %>
+      <%end%>
     </p>
-
     <p>
       <b>Observaciones: </b>
       <%= @event.observations %>
     </p>
-
     <p>
       <b>Antecedentes: </b>
       <%= @event.backup_file %>
     </p>
-
     <p>
       <b>Fuente: </b>
       <%= @event.source %>
     </p>
-
-
-
     <p>
       <b>Area:</b>
       <%= @event.area.description %>
     </p>
-
     <p>
       <b>Delito: </b>
       <%if @event.crime !=nil%>

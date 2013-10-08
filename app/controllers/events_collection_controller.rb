@@ -1,6 +1,8 @@
 class EventsCollectionController < ApplicationController
   def index
-    @collection = Event.all
+    @search = Event.search(params[:q])
+    @collection = @search.result(distinct: true)
+#    @collection = Events.all
   end
 
   def show

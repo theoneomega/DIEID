@@ -6,7 +6,7 @@
 development:
   adapter: oracle_enhanced
   database: xe
-  host: 192.168.1.86
+  host: localhost
   username: dieid
   password: dieid
   port: 1521
@@ -14,7 +14,7 @@ development:
 production:
   adapter: oracle_enhanced
   database: xe
-  host: 192.168.1.73
+  host: localhost
   username: DIEID_production
   password: dieid
   port: 1521
