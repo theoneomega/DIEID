@@ -51,7 +51,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    @event.description = @event.description.upcase
+#    @event.description = @event.description.upcase
     respond_to do |format|
       if @event.save
         UserMailer.event_registration(@event).deliver 
