@@ -1,0 +1,14 @@
+oct 09, 2013 9:43:48 AM org.apache.solr.core.Config getLuceneVersion
+Advertencia: the luceneMatchVersion is not specified, defaulting to LUCENE_24 emulation. You should at some point declare and reindex to at least 3.0, because 2.4 emulation is deprecated and will be removed in 4.0. This parameter will be mandatory in 4.0.
+oct 09, 2013 9:43:48 AM org.apache.solr.core.SolrConfig <init>
+Advertencia: Deprecated syntax found. <highlighting/> should move to <searchComponent/>
+oct 09, 2013 9:43:48 AM org.apache.solr.analysis.BaseTokenStreamFactory assureMatchVersion
+Advertencia: StandardTokenizerFactory is using deprecated LUCENE_24 emulation. You should at some point declare and reindex to at least 3.0, because 2.x emulation is deprecated and will be removed in 4.0
+oct 09, 2013 9:43:48 AM org.apache.solr.analysis.BaseTokenStreamFactory assureMatchVersion
+Advertencia: StandardFilterFactory is using deprecated LUCENE_24 emulation. You should at some point declare and reindex to at least 3.0, because 2.x emulation is deprecated and will be removed in 4.0
+oct 09, 2013 9:43:48 AM org.apache.solr.analysis.BaseTokenStreamFactory assureMatchVersion
+Advertencia: LowerCaseFilterFactory is using deprecated LUCENE_24 emulation. You should at some point declare and reindex to at least 3.0, because 2.x emulation is deprecated and will be removed in 4.0
+oct 09, 2013 9:43:48 AM org.apache.solr.request.XSLTResponseWriter <init>
+Advertencia: org.apache.solr.request.XSLTResponseWriter is deprecated. Please use the corresponding class in org.apache.solr.response
+oct 09, 2013 9:43:48 AM org.apache.solr.handler.component.SpellCheckComponent inform
+Advertencia: No queryConverter defined, using default converter

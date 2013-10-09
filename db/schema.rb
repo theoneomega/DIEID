@@ -222,10 +222,9 @@ ActiveRecord::Schema.define(:version => 20131008165251) do
   end
 
   create_table "townships", :force => true do |t|
-    t.integer  "di",         :precision => 38, :scale => 0
     t.string   "township"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

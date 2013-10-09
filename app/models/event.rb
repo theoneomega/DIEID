@@ -29,5 +29,15 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :drug, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :weapons, :allow_destroy => true, :reject_if => :all_blank
   
+  searchable do
+    text :description, :crime_id, :interior_number, :locality, :backup_file, :crime, :observations, :source, :street, :suburb,:township
+    text :person do
+      person.map(&:fullname)
+    end
+    
+#    text :area do
+#      area.map(&:description)
+#    end
+  end
  
 end

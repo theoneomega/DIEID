@@ -30,7 +30,5 @@ class EventsCollection < ActiveRecord::Base
   accepts_nested_attributes_for :drug, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :weapons, :allow_destroy => true, :reject_if => :all_blank
   
-   searchable do
-    text :description, :crime_id, :locality
-  end
+  
 end

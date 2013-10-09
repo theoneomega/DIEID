@@ -4,8 +4,10 @@ class EventsCollectionsController < ApplicationController
   
 
   def index
-    @search = EventsCollection.search do
-      fulltext params[:search]
+    @search = Event.search do
+      fulltext params[:search] 
+        
+      
     end
     @events_collection = @search.results
   end

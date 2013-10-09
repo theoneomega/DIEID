@@ -15,30 +15,21 @@
   </div>
 <%end%>
 <div class="well">
-<%#*<div class="well">%>
-<%#= search_form_for @search do |f| %>
-<%#*<div class="field">%>
-<%#=f.label :analyst_id, "Analista"%>
-<%#=f.text_field :analyst_id%>
-<%#*</div>%>
-<%#*<div class="actions">%>
-<%#= f.submit "Search" %>
-<%#*</div>%>
-<%#end%>
   <table class="table table-condensed">
     <thead>
-        <tr>
-          <th><%= "Prioridad" %></th>
-          <th><%= "Estatus" %></th>
-          <th><%= "Fecha" %></th>
-          <th><%="Descripcion" %></th>
-          <th><%= "Delito" %></th>
-          <th><%= "Analista" %></th>
-          <th><%= t(:actions) %></th>
-        </tr>
-      </thead>
-    <% @events.each do |event| %>
-      <tbody>
+      <tr>
+        <th><%= "Prioridad" %></th>
+        <th><%= "Estatus" %></th>
+        <th><%= "Fecha" %></th>
+        <th><%="Descripcion" %></th>
+        <th><%= "Delito" %></th>
+        <th><%= "Analista" %></th>
+        <th><%= t(:actions) %></th>
+      </tr>
+    </thead> 
+    <tbody>
+      <% @events.each do |event| %>
+
         <tr>
           <%if event.priority_id==10000%>
             <td><span class="label label-important"><%= event.priority.description %></span></td>
@@ -58,8 +49,6 @@
           <%else%>
             <td>N/A</td>
           <%end%>
-
-
           <%if event.crime%>
             <td><%= event.crime.crime %></td>
           <%else%>
@@ -72,7 +61,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='<%=t(:actions)%>'><i class="icon-cog"></i>&nbsp;<i class="icon-caret-down"></i></a>
                 <ul class="dropdown-menu">
                   <%if current_user.role.supervisor==true ||current_user.role.super_admin==true %>
-                  <li><%= link_to 'Asignar', edit_event_path(event) %></li>
+                    <li><%= link_to 'Asignar', edit_event_path(event) %></li>
                   <%end%>
                   <%if can? :show, Event%>
                     <li><%= link_to 'Mostrar', event %></li>
