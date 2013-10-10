@@ -1,5 +1,8 @@
 Sied::Application.routes.draw do 
 
+  resources :backup_files
+
+
   resources :events_collections
   resources :events
 

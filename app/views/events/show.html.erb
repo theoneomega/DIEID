@@ -52,8 +52,10 @@
       <%= @event.observations %>
     </p>
     <p>
-      <b>Antecedentes: </b>
-      <%= @event.backup_file %>
+      <b>Archivo de respaldo: </b>
+      <%@event.backup_files.each do |file|%>
+        <%=link_to file.file.to_s, file.file.to_s%>
+      <%end%>
     </p>
     <p>
       <b>Fuente: </b>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008165251) do
+ActiveRecord::Schema.define(:version => 20131010194811) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20131008165251) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "backup_files", :force => true do |t|
+    t.string   "file"
+    t.integer  "event_id",   :precision => 38, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "crimes", :force => true do |t|
@@ -137,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20131008165251) do
     t.integer  "status_id",       :precision => 38, :scale => 0
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.integer  "backup_file_id",  :precision => 38, :scale => 0
   end
 
   create_table "events_collections", :force => true do |t|
@@ -222,9 +230,10 @@ ActiveRecord::Schema.define(:version => 20131008165251) do
   end
 
   create_table "townships", :force => true do |t|
+    t.integer  "di",         :precision => 38, :scale => 0
     t.string   "township"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

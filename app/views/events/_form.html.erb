@@ -1,4 +1,4 @@
-<%= nested_form_for(@event) do |f| %>
+<%= nested_form_for @event, :html => {:multipart => true} do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -39,7 +39,6 @@
           <%= f.label :Prioridad %><br />
           <%= f.collection_select(:priority_id, Priority.all, :id, :description, {:prompt => "seleccione prioridad"}) %>
         </div>
-
 
         <div id="datetimepicker" class="input-append date">
           <%= f.label :Fecha_de_Evento %><br />
@@ -85,36 +84,41 @@
           <%=f.fields_for :vehicles do |builder| %>
             <%= render 'vehicles_fields', :f => builder %>
           <%end%>
-
         </p>
-
         <p>
           <%=f.fields_for :drug do |builder| %>
             <%= render 'drug_fields', :f => builder %>
           <%end%>
-
-
         <p>
           <%=f.fields_for :weapons do |builder| %>
             <%= render 'weapons_fields', :f => builder %>
           <%end%>
-
         </p>
-
-
         <div class="field">
           <%= f.label :Observaciones %><br />
           <%= f.text_area :observations %>
         </div>
-        <div class="field">
-          <%= f.label :Archivo_de_respaldo %><br />
-          <%= f.text_field :backup_file %>
-        </div>
+
+
+      
+
+          <%= f.link_to_add "  Archivo", :backup_files, :class => "btn btn-primary icon-plus" %>
+        <p>
+          <%=f.fields_for :backup_files do |builder| %>
+            <%= render 'backup_files_fields', :f => builder %>
+          <%end%>
+        <p>
+  <%#*<div class="field">%>
+  <%#= f.label :Archivo_de_respaldo %><br />
+  <%#= f.file_field :backup_file %>
+  <%#*</div>%>
+
+
+
         <div class="field">
           <%= f.label :Fuente %><br />
           <%= f.text_field :source %>
         </div>
-
         <%if controller.action_name == "new" or controller.action_name == "create"%>
           <div class="field">
             <%= f.hidden_field :analyst_id, :value => current_user.analyst_id %>
@@ -166,5 +170,9 @@
   $('#datetimepicker').datetimepicker({
     format: 'dd/MM/yyyy hh:mm:ss',
     language: 'es-ES'
+  });
+  $(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery("#new_file").fileupload();
   });
 </script>

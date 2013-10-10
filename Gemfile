@@ -25,6 +25,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
 end
 
 
@@ -41,6 +42,7 @@ gem 'cancan'
 gem "rolify"
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'carrierwave'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

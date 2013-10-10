@@ -11,9 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-////= require jquery.purr
 //= require best_in_place
 //= require jquery_ujs
+//= require jquery-fileupload/basic
 //= require jquery-ui
 //= require autocomplete-rails
 //= require twitter/bootstrap
