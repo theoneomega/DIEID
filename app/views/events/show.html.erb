@@ -16,7 +16,7 @@
       <%= @event.priority.description %>
     </p>
     <p>
-      <b>Analyst:</b>
+      <b>Analista:</b>
       <%=@event.analyst.analyst%>
 <%#= best_in_place @event.analyst, :analyst, type: :select, collection: Event.analyst.analyst %>
 <%#= best_in_place @event.analyst, :analyst, type: :select, :collection => @event.analyst.analyst ] %>
@@ -97,7 +97,10 @@
           <div class="control-group">
             <%@event.person.where(:status_id => 10001).each do |person|%>
               <ul class="inline">
-                <li><i class="icon-user"> </i> </i> <%=person.fullname %></li>
+                <li><i class="icon-male"> </i> </i> <%=person.fullname %></li>
+<ul>
+		<li><i class="icon-"> </i> </i> <%=person.observations %></li>
+</ul>
               </ul>
             <%end%>
           </div>
@@ -112,7 +115,7 @@
           <div class="control-group">
             <%@event.person.where(:status_id => 10000).each do |person|%>
               <ul>
-                <li><%=person.fullname %></li>
+                <li><i class="icon-lock"> </i><%=person.fullname %></li>
               </ul>
             <%end%>
           </div>
@@ -142,7 +145,7 @@
           <div class="control-group">
             <%@event.vehicles.each do |vehicle|%>
               <ul>
-                <li><%=vehicle.fulldescription %></li>
+                <li><i class="icon-truck"> </i><%=vehicle.fulldescription %></li>
               </ul>
             <%end%>
           </div>
@@ -157,7 +160,7 @@
           <div class="control-group">
             <%@event.weapons.each do |weapon|%>
               <ul>
-                <li><%=weapon.fulldescription %></li>
+                <li><i class="icon-screenshot"> </i><%=weapon.fulldescription %></li>
               </ul>
             <%end%>
           </div>
@@ -182,8 +185,8 @@
   </div>
 <%end%>
 
-<%= link_to 'Editar', edit_event_path(@event), :class => "btn btn-primary" %> |
-<%= link_to 'Regresar', events_path,:class => "btn btn-danger" %>
+<%= link_to 'Editar', edit_event_path(@event), :class => "btn btn-inverse" %> |
+<%= link_to 'Regresar', events_path,:class => "btn btn-warning" %>
 
 <script>
   $(document).ready(function() {

@@ -41,7 +41,13 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
-
+	@person.first_name = @person.first_name.upcase
+	@person.last_name1 = @person.last_name1.upcase
+	@person.last_name2 = @person.last_name2.upcase
+	@person.first_name = @person.first_name.upcase
+@person.originative = @person.originative.upcase
+@person.first_name = @person.first_name.upcase
+    @person.observations = @person.observations.upcase
     respond_to do |format|
       if @person.save
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
