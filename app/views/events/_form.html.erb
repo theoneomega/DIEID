@@ -72,7 +72,7 @@
   <%#= f.text_field :locality %>
           <%= f.collection_select(:locality_id, Locality.all, :id, :locality) %>
         </div>
-        <%= f.link_to_add "Persona", :person, :class => "btn btn-primary" %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary" %>
+        <%= f.link_to_add "Persona", :person, :class => "btn btn-primary icon-plus-sign " %><%= f.link_to_add "Armas", :weapons, :class => "btn btn-primary icon-plus-sign" %><%= f.link_to_add "Vehiculos", :vehicles, :class => "btn btn-primary icon-plus-sign" %><%= f.link_to_add "Drogas", :drug, :class => "btn btn-primary icon-plus-sign" %>
 
         <p>
           <%=f.fields_for :person do |builder| %>

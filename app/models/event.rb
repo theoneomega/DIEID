@@ -1,10 +1,11 @@
 class Event < ActiveRecord::Base
   attr_accessible :analyst_id, :area_id, :backup_file, :crime_id, :description, :detained, :drug_id, :drugs, :event_date, :id, :interior_number, :locality, :locality_id, :observations, :person_id, :place_id, :priority_id, :source, :status_id, :street, :suburb, :suspects, :township_id, :vehicle_id, :vehicles, :victims, :weapon_id, :weapons
-  attr_accessible :person_attributes,:weapons_attributes, :backup_files_attributes
+  attr_accessible :person_attributes,:weapons_attributes, :backup_files_attributes, :vehicles_attributes
+
   belongs_to :priority
   belongs_to :crime
   has_many :event_person, :dependent => :destroy
-  has_many :person, :through => :event_person
+  has_many :person, :through => :event_person, :dependent => :destroy
   has_many :vehicles, :through => :event_vehicles
   has_many :event_vehicles, :dependent => :destroy
   has_many :event_drugs, :dependent => :destroy
